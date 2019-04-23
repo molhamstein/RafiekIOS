@@ -1,0 +1,6 @@
+framework module Pods_Al_Rafik {
+  umbrella header "Pods-Al-Rafik-umbrella.h"
+
+  export *
+  module * { export * }
+}

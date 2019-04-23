@@ -1,0 +1,46 @@
+PODS:
+  - Alamofire (4.8.1)
+  - CocoaLumberjack (3.5.0):
+    - CocoaLumberjack/Core (= 3.5.0)
+  - CocoaLumberjack/Core (3.5.0)
+  - PocketSVG (2.4.2)
+  - SVGKit (2.1.0):
+    - CocoaLumberjack (~> 3.0)
+  - SwiftSVG (2.2.0)
+  - SwiftyJSON (4.2.0)
+  - Toast-Swift (4.0.1)
+  - Zip (1.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - PocketSVG (~> 2.0)
+  - SVGKit
+  - SwiftSVG
+  - SwiftyJSON
+  - Toast-Swift
+  - Zip (~> 1.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CocoaLumberjack
+    - PocketSVG
+    - SVGKit
+    - SwiftSVG
+    - SwiftyJSON
+    - Toast-Swift
+    - Zip
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  CocoaLumberjack: cffaa70a9336515228178e3669b71bd49d343850
+  PocketSVG: c30139829206a43df2ec203880e3970531facba7
+  SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
+  SwiftSVG: 19bc4e434dcf236ece45ddf75f5ee1d3ef8061e6
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
+  Zip: 8877eede3dda76bcac281225c20e71c25270774c
+
+PODFILE CHECKSUM: 42e0dc30da75896503f0ca639118627994d65548
+
+COCOAPODS: 1.5.3
