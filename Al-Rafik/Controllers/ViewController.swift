@@ -18,6 +18,8 @@ class ViewController: AbstractController {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var controlView: UIView!
+    @IBOutlet weak var contolrViewWidthConstraint:NSLayoutConstraint!
+    @IBOutlet weak var contentViewWidthConstraint:NSLayoutConstraint!
     
     var layers:[CAShapeLayer] = []
     var book:Book?
@@ -35,7 +37,6 @@ class ViewController: AbstractController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.showNavBackButton = true
         NavigationManager.delegate = self
     }
@@ -54,8 +55,8 @@ class ViewController: AbstractController {
         if let bookName = book?.name_en{
             let path = FileHelper.document(filePath: bookName)
             if FileHelper.isExists(filePath: path){
-                readBook(file: bookName)
-                //downloadBook(bookId: bookId ?? "")
+                //readBook(file: bookName)
+                downloadBook(bookId: bookId ?? "")
             }else{
                 downloadBook(bookId: bookId ?? "")
             }
@@ -87,8 +88,6 @@ class ViewController: AbstractController {
     
     
     func readBook(file:String){
-        
-        print(FileHelper.listFilesFromDocumentsFolder(folder: file))
         appBrain.setBook(file)
         if let bookJson = FileHelper.readBookJSON(folder: file, file: "book.json"){
         self.book = Book(json:bookJson)
@@ -110,6 +109,60 @@ class ViewController: AbstractController {
     
     func navigateTo(page:Page){
         selectedPage = page
+        if let descritpion = selectedPage?.description{
+            VoiceManager.shared.speek(msg: descritpion)
+        }
+        self.contolrViewWidthConstraint.setNewConstant(200.0)
+        UIView.animate(withDuration: 0.1, animations: {
+            self.view.layoutSubviews()
+        }, completion: nil)
+        
+        // controlr view
+        if let control = page.control{
+            if let content = control.content{
+                let viewBox = SVGManager.shared.viewBox(with: content)
+                let bounds = controlView.bounds
+                let ratio = SVGManager.shared.getRatio(viewBox: viewBox, bounds: bounds)
+                let width = viewBox.width * ratio
+                self.contolrViewWidthConstraint.setNewConstant(width)
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.view.layoutSubviews()
+                }, completion: nil)
+
+                let layers = SVGManager.shared.drawSVG(of: content, containerView: self.controlView)
+                var svgLayers:[SVGLayer] = []
+                for layer in layers{
+                    if let id = layer.id{
+                        layer.layerActions =  control.shapes[id] ?? []
+                        svgLayers.append(layer)
+                    }
+                }
+                
+                self.controlView.layer.sublayers = svgLayers
+            }
+        }else if let control = self.book?.control{
+            if let content = control.content{
+                let viewBox = SVGManager.shared.viewBox(with: content)
+                let bounds = controlView.bounds
+                let ratio = SVGManager.shared.getRatio(viewBox: viewBox, bounds: bounds)
+                let width = viewBox.width * ratio
+                self.contolrViewWidthConstraint.setNewConstant(width)
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.view.layoutSubviews()
+                }, completion: nil)
+                let layers = SVGManager.shared.drawSVG(of: content, containerView: self.controlView)
+                var svgLayers:[SVGLayer] = []
+                for layer in layers{
+                    if let id = layer.id{
+                        layer.layerActions =  control.shapes[id] ?? []
+                        svgLayers.append(layer)
+                    }
+                }
+               
+                self.controlView.layer.sublayers = svgLayers
+            }
+        }
+        
         // content view
         let content = page.content
         let layers = SVGManager.shared.drawSVG(of: content!, containerView: self.contentView)
@@ -122,33 +175,7 @@ class ViewController: AbstractController {
         }
         self.contentView.layer.sublayers = svgLayers
 
-        // controlr view
-        if let control = page.control{
-            if let content = control.content{
-                let layers = SVGManager.shared.drawSVG(of: content, containerView: self.controlView)
-                var svgLayers:[SVGLayer] = []
-                for layer in layers{
-                    if let id = layer.id{
-                        layer.layerActions =  control.shapes[id] ?? []
-                        svgLayers.append(layer)
-                    }
-                }
-                self.controlView.layer.sublayers = svgLayers
-            }
-        }else if let control = self.book?.control{
-            if let content = control.content{
-                
-                let layers = SVGManager.shared.drawSVG(of: content, containerView: self.controlView)
-                var svgLayers:[SVGLayer] = []
-                for layer in layers{
-                    if let id = layer.id{
-                        layer.layerActions =  control.shapes[id] ?? []
-                        svgLayers.append(layer)
-                    }
-                }
-                self.controlView.layer.sublayers = svgLayers
-            }
-        }
+    
         
         
         
@@ -213,29 +240,7 @@ class ViewController: AbstractController {
         
         
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
-//        guard let point = touch?.location(in: contentView) else { return }
-//        guard let sublayers = contentView.layer.sublayers as? [SVGLayer] else {return}
-//        for layer in sublayers {
-//            if let path = layer.path , path.contains(point) {
-//                print(layer.id)
-//                self.view.backgroundColor = UIColor(cgColor:layer.fillColor!)
-//            }
-//        }
-    }
-    
-    @objc func svgViewTapped(_ recognizer:UITapGestureRecognizer){
-        let p = recognizer.location(in: self.contentView)
-        let hitLayer = self.view.layer.hitTest(p)
-        if hitLayer != nil{
-            print(hitLayer?.value(forKey: "id") ?? "XXXX")
-        }
-    }
-    
-   
 }
-
 
 
 // navigation
@@ -300,8 +305,11 @@ extension ViewController:NavigationManagerDelegate{
         if num < menu.count {
             let action = menu[num]
             if let type = action.type{
-                appBrain.setValue(action.value ?? "")
-                appBrain.performOperation(type)
+                if let val = action.value{
+                    self.appBrain.setValue(val)
+                    self.appBrain.performOperation(type)
+                    
+                }
             }
         }
     }

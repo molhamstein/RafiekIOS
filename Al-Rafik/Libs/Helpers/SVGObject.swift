@@ -41,8 +41,6 @@ public class SVGManager{
         guard let width = box?.width ,  let height = box?.height else { return CGSize()}
         return CGSize(width: CGFloat(width), height: CGFloat(height))
     }
-    
-    
 
     public func svgSource(of url:URL) -> SVGKSource{
         return SVGKSourceURL.source(from: url)
@@ -63,9 +61,7 @@ public class SVGManager{
     
     public func drawSVG(of url:URL,containerView:UIView) ->[SVGLayer]{
 
-      //  let Layer = CALayer()
         var layers = [SVGLayer]()
-        
         for path in paths(of: url) {
             // Create a layer for each path
             let layer = SVGLayer()
@@ -92,115 +88,21 @@ public class SVGManager{
                 print("id \(id)")
                 layer.id = id
             }
-            
             // Set its display properties
             layer.lineWidth = strokeWidth
             layer.strokeColor = strokeColor
             layer.fillColor = fillColor
-            
-            
-            //            let boundingBox = layer.path?.boundingBox
-            //            let width = boundingBox?.width ?? 1
-            //            let height = boundingBox?.height ?? 1
-            
-            //            let boundingBoxAspectRatio = width / height
-            //            let viewAspectRatio =  view.bounds.width/view.bounds.height
-            //
-            //            let scaleFactor: CGFloat
-            //            if (boundingBoxAspectRatio > viewAspectRatio) {
-            //                // Width is limiting factor
-            //                scaleFactor = view.bounds.width / width
-            //            } else {
-            //                // Height is limiting factor
-            //                scaleFactor = view.bounds.height / height
-            //            }
-            //
-            let width = viewBox(with: url).width
-            let height = viewBox(with: url).height
-            
-            let boundingBoxAspectRatio = width / height
-            let viewAspectRatio =  containerView.bounds.width/containerView.bounds.height
-            
-            let scaleFactor: CGFloat
-            if (boundingBoxAspectRatio > viewAspectRatio) {
-                // Width is limiting factor
-                scaleFactor = containerView.bounds.width / width
-            } else {
-                // Height is limiting factor
-                scaleFactor = containerView.bounds.height / height
-            }
-            
-            //            let xScaleFactor:CGFloat = containerView.frame.width  / viewBox(with: content).width
-            //            let yScaleFactor:CGFloat = containerView.frame.height / viewBox(with: content).height
-            
+    
+            let scaleFactor = getRatio(viewBox: viewBox(with: url), bounds: containerView.bounds)
             var affineTransform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
             let transformedPath = layer.path?.copy(using: &affineTransform)
             layer.path = transformedPath
             
             // Add it to the layer hierarchy
             layers.append(layer)
-          //  Layer.addSublayer(layer)
-            
         }
      
         return layers
-        //        let xScaleFactor:CGFloat = contentView.frame.width  / CGFloat(width ?? 1)
-        //        let yScaleFactor:CGFloat = contentView.frame.height / CGFloat(height ?? 1)
-        //        let transform = CATransform3DMakeScale(xScaleFactor, yScaleFactor, 1.0)
-        ////        transform = CATransform3DTranslate(transform, 0, 0, 0)
-        //        Layer.transform = transform
-        
-        //
-        //        let svgURL = Bundle.main.url(forResource: "file2", withExtension: "svg")!
-        //        let paths = SVGBezierPath.pathsFromSVG(at: svgURL)
-        //        let shapeLayer = CALayer()
-        //        for (_, path) in paths.enumerated() {
-        //            let layer = CAShapeLayer()
-        //
-        //            layer.path = path.cgPath
-        //            // Default Settings
-        //            var strokeWidth = CGFloat(4.0)
-        //            var strokeColor = UIColor.black.cgColor
-        //            var fillColor = UIColor.white.cgColor
-        //
-        //            // Inspect the SVG Path Attributes
-        //            print("path.svgAttributes = \(path.svgAttributes)")
-        //
-        //            if let strokeValue = path.svgAttributes["stroke-width"] {
-        //                if let strokeN = NumberFormatter().number(from: strokeValue as! String) {
-        //                    strokeWidth = CGFloat(truncating: strokeN)
-        //                }
-        //            }
-        //
-        //            if let strokeValue = path.svgAttributes["stroke"] {
-        //                strokeColor = strokeValue as! CGColor
-        //            }
-        //
-        //            if let fillColorVal = path.svgAttributes["fill"] {
-        //                fillColor = fillColorVal as! CGColor
-        //            }
-        //
-        //            if let id = path.svgAttributes["id"]{
-        //                print("id \(id)")
-        //                layer.setValue(id, forKey: "id")
-        //            }
-        //
-        //            // Set its display properties
-        //            layer.lineWidth = strokeWidth
-        //            layer.strokeColor = strokeColor
-        //            layer.fillColor = fillColor
-        //            layers.append(layer)
-        ////            shapeLayer.addSublayer(layer)
-        //        }
-        ////
-        ////        var transform = CATransform3DMakeScale(0.4, 0.4, 1.0)
-        ////        transform = CATransform3DTranslate(transform, 0 , 0, 0)
-        ////        shapeLayer.transform = transform
-        ////        view.layer.addSublayer(shapeLayer)
-        ////
-        //
-        //
-        
     }
     
     
@@ -240,95 +142,37 @@ public class SVGManager{
             layer.strokeColor = strokeColor
             layer.fillColor = fillColor
             
-            
-            let width = viewBox(with: content).width
-            let height = viewBox(with: content).height
-
-            let boundingBoxAspectRatio = width / height
-            let viewAspectRatio =  containerView.bounds.width/containerView.bounds.height
-
-            let scaleFactor: CGFloat
-            if (boundingBoxAspectRatio > viewAspectRatio) {
-                // Width is limiting factor
-                scaleFactor = containerView.bounds.width / width
-            } else {
-                // Height is limiting factor
-                scaleFactor = containerView.bounds.height / height
-            }
-
-//            let xScaleFactor:CGFloat = containerView.frame.width  / viewBox(with: content).width
-//            let yScaleFactor:CGFloat = containerView.frame.height / viewBox(with: content).height
-            
+            let scaleFactor = getRatio(viewBox: viewBox(with: content), bounds: containerView.bounds)
             var affineTransform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
             let transformedPath = layer.path?.copy(using: &affineTransform)
             layer.path = transformedPath
             
             // Add it to the layer hierarchy
             layers.append(layer)
-          //  Layer.addSublayer(layer)
-            
         }
         return layers
-        //        let xScaleFactor:CGFloat = contentView.frame.width  / CGFloat(width ?? 1)
-        //        let yScaleFactor:CGFloat = contentView.frame.height / CGFloat(height ?? 1)
-        //        let transform = CATransform3DMakeScale(xScaleFactor, yScaleFactor, 1.0)
-        ////        transform = CATransform3DTranslate(transform, 0, 0, 0)
-        //        Layer.transform = transform
-        
-        //
-        //        let svgURL = Bundle.main.url(forResource: "file2", withExtension: "svg")!
-        //        let paths = SVGBezierPath.pathsFromSVG(at: svgURL)
-        //        let shapeLayer = CALayer()
-        //        for (_, path) in paths.enumerated() {
-        //            let layer = CAShapeLayer()
-        //
-        //            layer.path = path.cgPath
-        //            // Default Settings
-        //            var strokeWidth = CGFloat(4.0)
-        //            var strokeColor = UIColor.black.cgColor
-        //            var fillColor = UIColor.white.cgColor
-        //
-        //            // Inspect the SVG Path Attributes
-        //            print("path.svgAttributes = \(path.svgAttributes)")
-        //
-        //            if let strokeValue = path.svgAttributes["stroke-width"] {
-        //                if let strokeN = NumberFormatter().number(from: strokeValue as! String) {
-        //                    strokeWidth = CGFloat(truncating: strokeN)
-        //                }
-        //            }
-        //
-        //            if let strokeValue = path.svgAttributes["stroke"] {
-        //                strokeColor = strokeValue as! CGColor
-        //            }
-        //
-        //            if let fillColorVal = path.svgAttributes["fill"] {
-        //                fillColor = fillColorVal as! CGColor
-        //            }
-        //
-        //            if let id = path.svgAttributes["id"]{
-        //                print("id \(id)")
-        //                layer.setValue(id, forKey: "id")
-        //            }
-        //
-        //            // Set its display properties
-        //            layer.lineWidth = strokeWidth
-        //            layer.strokeColor = strokeColor
-        //            layer.fillColor = fillColor
-        //            layers.append(layer)
-        ////            shapeLayer.addSublayer(layer)
-        //        }
-        ////
-        ////        var transform = CATransform3DMakeScale(0.4, 0.4, 1.0)
-        ////        transform = CATransform3DTranslate(transform, 0 , 0, 0)
-        ////        shapeLayer.transform = transform
-        ////        view.layer.addSublayer(shapeLayer)
-        ////
-        //
-        //
-        
     }
     
     
+    func getRatio(viewBox:CGSize,bounds:CGRect) ->CGFloat{
+        
+        let width = viewBox.width
+        let height = viewBox.height
+        
+        let boundingBoxAspectRatio = width / height
+        let viewAspectRatio =  bounds.width/bounds.height
+        
+        let scaleFactor: CGFloat
+        if (boundingBoxAspectRatio > viewAspectRatio) {
+            // Width is limiting factor
+            scaleFactor = bounds.width / width
+        } else {
+            // Height is limiting factor
+            scaleFactor = bounds.height / height
+        }
+        return scaleFactor
+        
+    }
     
     
 }

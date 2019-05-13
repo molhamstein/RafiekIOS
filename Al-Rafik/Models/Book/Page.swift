@@ -22,6 +22,23 @@ class Page:BaseModel {
     public var menu : Array<Action>?
     public var direction : JSON?
 
+    
+    var description:String?{
+        if AppConfig.currentLanguage == .arabic{
+            return description_ar
+        }
+        return description_en
+    }
+    
+    
+    var name:String?{
+        if AppConfig.currentLanguage == .arabic{
+            return name_ar
+        }
+        return name_en
+    }
+    
+    
     override init() {
         super.init()
     }

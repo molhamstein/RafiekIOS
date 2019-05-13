@@ -10,16 +10,53 @@ import Foundation
 
 
 
-struct AppBrain {
+enum Commands:String{
+    case menu       = "menu"
+    case enter      = "enter"
+    case up         = "up"
+    case down       = "down"
+    case left       = "left"
+    case right      = "right"
+    case previous   = "previous"
+    case next       = "next"
+    case confirm    = "confirm"
+    
+    var description:String{
+        switch self {
+        case .menu:
+            return ""
+        case .enter:
+            return ""
+        case .up:
+            return ""
+        case .down:
+            return ""
+        case .left:
+            return ""
+        case .right:
+            return ""
+        case .previous:
+            return ""
+        case .next:
+            return "Going To next page"
+        case .confirm:
+            return ""
+        }
+        
+    }
+}
+
+class AppBrain {
 
     private var value:String?
     private var number:Int?
     private var book:String?
     private var enterMode:Bool = false
     private var menuMode:Bool = false
+    private var confirmMode:Bool = false
     
     private enum Operation{
-        case text2Speech((String)->Void)
+        case text2Speech((String, @escaping () -> ())->Void)
         case playAudio((URL,Bool)->Void)
         case navigate((String)->Void)
         case openUrl((String)->Void)
@@ -35,47 +72,59 @@ struct AppBrain {
         "url":Operation.openUrl(NavigationManager.openUrl),
         "command":Operation.command,
     ]
-    
-    
   
-    mutating func performOperation(_ sympole:String){
+     func performOperation(_ sympole:String){
         VoiceManager.shared.stop()
         if let operation = operations[sympole]{
             switch operation {
-            case .text2Speech(let f):
-                f(value ?? "")
+            case .text2Speech(let speek):
+                speek(value ?? ""){}
+                number = nil
                 break
-            case .playAudio(let f):
+            case .playAudio(let play):
                 if let book = self.book{
                     if let url = FileHelper.getAudiofilePath(folder: book, file: value ?? ""){
-                        f(url,false)
+                        play(url,false)
                     }
                 }
+                number = nil
                 break
-            case .navigate(let f):
-                f(value ?? "")
+                
+            case .navigate(let navigate):
+                navigate(value ?? "")
+                number = nil
                 break
-            case .openUrl(let f):
-                f(value ?? "")
+                
+            case .openUrl(let openURL):
+                openURL(value ?? "")
+                number = nil
                 break
                 
             case .command:
-                VoiceManager.shared.speek(msg: value ?? "")
+                // Comand
+                VoiceManager.shared.speek(msg: value ?? ""){
+                    
+                }
                 if let val = value , let num = Int(val){
                     setNumber(num)
                 }
-                if let op = value{
+                if let val = value , let op = Commands(rawValue: val){
                     switch (op){
-                    case "up" , "down" , "left" , "right":
-                        NavigationManager.goToDirection(dir: op)
+                    case .up , .down , .left , .right:
+                        VoiceManager.shared.speek(msg: op.description) {
+                            NavigationManager.goToDirection(dir: op.rawValue)
+                            self.number = nil
+                        }
                         break;
-                    case "next":
+                    case .next:
                         NavigationManager.next()
+                        number = nil
                         break;
-                    case "previous":
+                    case .previous:
                         NavigationManager.prev()
+                        number = nil
                         break;
-                    case "enter":
+                    case .enter:
                         if !enterMode{
                             if menuMode{
                                 if let index = number {
@@ -85,6 +134,7 @@ struct AppBrain {
                                 menuMode = false
                             }else{
                                 VoiceManager.shared.speek(msg: "Please Choose the page number")
+                                number = nil
                                 enterMode = true
                             }
                         }else{
@@ -95,16 +145,17 @@ struct AppBrain {
                             enterMode = false
                         }
                         break
-                    case "menu":
+                    case .menu:
                             VoiceManager.shared.speek(msg: "Please Choose the Action number")
                             NavigationManager.playMenuActions()
                             menuMode = true
                             enterMode = false
+                            number = nil
                         break
-                    default:
-                        break;
+                    case .confirm:
+                        break
                     }
-                }
+                }// End Command
                 break
            
             }
@@ -114,18 +165,20 @@ struct AppBrain {
     }
 
     
-    mutating func setValue(_ operand:String){
+     func setValue(_ operand:String){
         value = operand
     }
     
-    mutating func setNumber(_ val:Int){
-        number = val
+     func setNumber(_ val:Int){
+        number = (number ?? 0) * 10 +  val
+        print(number)
     }
     
 
-    mutating func setBook(_ book:String){
+     func setBook(_ book:String){
         self.book = book
     }
+    
     
     
 }

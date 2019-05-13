@@ -16,8 +16,9 @@ class VoiceManager:NSObject{
     public var player:AVAudioPlayer?
     public var speechSynthesizer:AVSpeechSynthesizer?
     public var textList:[String]?
-    private var current:Int = 0
-    private var playList:Bool = false
+    var current:Int = 0
+    var playList:Bool = false
+    var finished = false
     
     public static var shared = VoiceManager()
     
@@ -27,9 +28,9 @@ class VoiceManager:NSObject{
         speechSynthesizer?.delegate = self
     }
     
-    func speek(msg:String){
+    func speek(msg:String,completionBlock: @escaping () -> () = {  }){
         // Line 1. Create an instance of AVSpeechSynthesizer.
-       
+       finished = false
         // Line 2. Create an instance of AVSpeechUtterance and pass in a String to be spoken.
         let speechUtterance: AVSpeechUtterance = AVSpeechUtterance(string: msg)
         //Line 3. Specify the speech utterance rate. 1 = speaking extremely the higher the values the slower speech patterns. The default rate, AVSpeechUtteranceDefaultSpeechRate is 0.5
@@ -38,15 +39,25 @@ class VoiceManager:NSObject{
         speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         // Line 5. Pass in the urrerance to the synthesizer to actually speak.
         speechSynthesizer?.speak(speechUtterance)
+
         
-        
+        DispatchQueue.main.async {
+//                    while(true){
+//                        if (self.finished){
+//                            completionBlock()
+//                            break;
+//                        }
+//                    }
+        }
+        print("xx")
     }
     
     func speakTextList(){
         if textList != nil{
             playList = true
             current = 0
-            speek(msg: textList?[current] ?? "")
+            speek(msg: textList?[current] ?? ""){
+            }
         }else{
             playList = false
         }
@@ -66,7 +77,7 @@ class VoiceManager:NSObject{
             player?.play()
             
         } catch {
-            self.speek(msg: "I Can not play this file")
+            self.speek(msg: "I Can not play this file"){}
         }
     }
     
@@ -85,10 +96,12 @@ class VoiceManager:NSObject{
 extension VoiceManager:AVSpeechSynthesizerDelegate{
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        finished = true
+        print("finished")
         if playList{
             current += 1
             if let cnt = textList?.count , current < cnt {
-                speek(msg: textList?[current] ?? "")
+                speek(msg: textList?[current] ?? ""){}
             }else{
                 playList = false
                 textList = nil

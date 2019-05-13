@@ -35,7 +35,6 @@ public class Action:BaseModel{
             return url
         case "command":
             return command
-            break
         default:
             break
         }

@@ -52,12 +52,13 @@ class BooksViewController: AbstractController,UITableViewDelegate,UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(books[indexPath.row].name_en!)
-        VoiceManager.shared.speek(msg: books[indexPath.row].description_en ?? "")
-        let vc = UIStoryboard.mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        vc.book = books[indexPath.row]
-        vc.bookId = books[indexPath.row].bId
-        self.navigationController?.pushViewController(vc, animated: true)
+        //VoiceManager.shared.speek(msg: books[indexPath.row].description_en ?? ""){
+            let vc = UIStoryboard.mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            vc.book = self.books[indexPath.row]
+            vc.bookId = self.books[indexPath.row].bId
+            self.navigationController?.pushViewController(vc, animated: true)
+       // }
+        
     }
 
 }

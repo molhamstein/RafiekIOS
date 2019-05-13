@@ -28,7 +28,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGT-UK-cze">
                                 <rect key="frame" x="912" y="0.0" width="200" height="834"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="H3e-dr-AFU"/>
@@ -53,6 +52,7 @@
                     <navigationItem key="navigationItem" id="fHR-QG-cjY"/>
                     <connections>
                         <outlet property="contentView" destination="gDp-H6-SNe" id="fIC-O8-Xfr"/>
+                        <outlet property="contolrViewWidthConstraint" destination="H3e-dr-AFU" id="cCY-qr-I7K"/>
                         <outlet property="controlView" destination="wGT-UK-cze" id="uec-bo-Uh0"/>
                     </connections>
                 </viewController>
