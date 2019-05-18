@@ -28,16 +28,34 @@ enum Commands:String{
         case .enter:
             return ""
         case .up:
-            return ""
+            if AppConfig.currentLanguage == .arabic{
+                return "Going To up page"
+            }
+            return "Going To up page"
         case .down:
-            return ""
+            if AppConfig.currentLanguage == .arabic{
+                return "Going To down page"
+            }
+            return "Going To down page"
         case .left:
-            return ""
+            if AppConfig.currentLanguage == .arabic{
+                return "Going To left page"
+            }
+            return "Going To left page"
         case .right:
-            return ""
+            if AppConfig.currentLanguage == .arabic{
+                return "Going To right page"
+            }
+            return "Going To right page"
         case .previous:
-            return ""
+            if AppConfig.currentLanguage == .arabic{
+                return "Going To previose page"
+            }
+            return "Going To previose page"
         case .next:
+            if AppConfig.currentLanguage == .arabic{
+                return "Going To next page"
+            }
             return "Going To next page"
         case .confirm:
             return ""
@@ -56,7 +74,7 @@ class AppBrain {
     private var confirmMode:Bool = false
     
     private enum Operation{
-        case text2Speech((String, @escaping () -> ())->Void)
+        case text2Speech((String, @escaping (Bool) -> ())->Void)
         case playAudio((URL,Bool)->Void)
         case navigate((String)->Void)
         case openUrl((String)->Void)
@@ -78,7 +96,7 @@ class AppBrain {
         if let operation = operations[sympole]{
             switch operation {
             case .text2Speech(let speek):
-                speek(value ?? ""){}
+                speek(value ?? ""){_ in }
                 number = nil
                 break
             case .playAudio(let play):
@@ -102,27 +120,29 @@ class AppBrain {
                 
             case .command:
                 // Comand
-                VoiceManager.shared.speek(msg: value ?? ""){
-                    
-                }
+                VoiceManager.shared.speek(value ?? "")
                 if let val = value , let num = Int(val){
                     setNumber(num)
                 }
                 if let val = value , let op = Commands(rawValue: val){
                     switch (op){
                     case .up , .down , .left , .right:
-                        VoiceManager.shared.speek(msg: op.description) {
+                        VoiceManager.shared.speek(op.description) { _ in
                             NavigationManager.goToDirection(dir: op.rawValue)
                             self.number = nil
                         }
                         break;
                     case .next:
-                        NavigationManager.next()
-                        number = nil
+                        VoiceManager.shared.speek(op.description) { _ in
+                            NavigationManager.next()
+                            self.number = nil
+                        }
                         break;
                     case .previous:
-                        NavigationManager.prev()
-                        number = nil
+                        VoiceManager.shared.speek(op.description) { _ in
+                            NavigationManager.prev()
+                            self.number = nil
+                        }
                         break;
                     case .enter:
                         if !enterMode{
@@ -133,7 +153,7 @@ class AppBrain {
                                 }
                                 menuMode = false
                             }else{
-                                VoiceManager.shared.speek(msg: "Please Choose the page number")
+                                VoiceManager.shared.speek("Please Choose the page number")
                                 number = nil
                                 enterMode = true
                             }
@@ -146,7 +166,7 @@ class AppBrain {
                         }
                         break
                     case .menu:
-                            VoiceManager.shared.speek(msg: "Please Choose the Action number")
+                        VoiceManager.shared.speek("Please Choose the Action number")
                             NavigationManager.playMenuActions()
                             menuMode = true
                             enterMode = false
@@ -171,7 +191,6 @@ class AppBrain {
     
      func setNumber(_ val:Int){
         number = (number ?? 0) * 10 +  val
-        print(number)
     }
     
 

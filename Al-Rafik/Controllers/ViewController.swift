@@ -55,8 +55,8 @@ class ViewController: AbstractController {
         if let bookName = book?.name_en{
             let path = FileHelper.document(filePath: bookName)
             if FileHelper.isExists(filePath: path){
-                //readBook(file: bookName)
-                downloadBook(bookId: bookId ?? "")
+                readBook(file: bookName)
+                //downloadBook(bookId: bookId ?? "")
             }else{
                 downloadBook(bookId: bookId ?? "")
             }
@@ -110,7 +110,9 @@ class ViewController: AbstractController {
     func navigateTo(page:Page){
         selectedPage = page
         if let descritpion = selectedPage?.description{
-            VoiceManager.shared.speek(msg: descritpion)
+            VoiceManager.shared.speek(descritpion){_ in
+                print("this is a new page")
+            }
         }
         self.contolrViewWidthConstraint.setNewConstant(200.0)
         UIView.animate(withDuration: 0.1, animations: {

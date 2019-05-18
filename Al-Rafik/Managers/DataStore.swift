@@ -20,10 +20,13 @@ import SwiftyJSON
 class DataStore :NSObject {
     
     //MARK: Cache keys
-    
+    private var CACHE_CURRENT_LANG = "lang"
+    private var CACHE_CURRENT_GENDAR = "gendar"
     //MARK: Temp data holders
     //keep reference to the written value in another private property just to prevent reading from cache each time you use this var
-   
+    var _lang:String?
+    var _gendar:String?
+    
     //MARK: Singelton
     public static var shared: DataStore = DataStore()
     
@@ -31,6 +34,34 @@ class DataStore :NSObject {
         super.init()
     }
    
+    public var language:String?{
+        set{
+            _lang = newValue
+            saveStringWithKey(stringToStore: _lang!, key: CACHE_CURRENT_LANG)
+        }
+        
+        get{
+            if _lang == nil{
+                _lang = loadStringForKey(key: CACHE_CURRENT_LANG)
+            }
+            return _lang
+        }
+    }
+    
+    public var gendar:String?{
+        set{
+            _gendar = newValue
+            saveStringWithKey(stringToStore: _gendar!, key: CACHE_CURRENT_GENDAR)
+        }
+        
+        get{
+            if _gendar == nil{
+                _gendar = loadStringForKey(key: CACHE_CURRENT_GENDAR)
+            }
+            return _gendar
+        }
+    }
+    
     //MARK: Cache Utils
     private func saveBaseModelArray(array: [BaseModel] , withKey key:String){
         let array : [[String:Any]] = array.map{$0.dictionaryRepresentation()}

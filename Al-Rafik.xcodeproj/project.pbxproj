@@ -70,9 +70,13 @@
 		1438AC432257F17800ED68D4 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438AC322257F17800ED68D4 /* AppFonts.swift */; };
 		1438AC452257F49700ED68D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438AC442257F49700ED68D4 /* Constants.swift */; };
 		1438AC472257F78D00ED68D4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438AC462257F78D00ED68D4 /* Page.swift */; };
+		1493557F228F658900F12A99 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1493557E228F658900F12A99 /* LanguageViewController.swift */; };
+		14935581228F659300F12A99 /* GendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14935580228F659300F12A99 /* GendarViewController.swift */; };
+		14935583228F688400F12A99 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14935582228F688400F12A99 /* SearchViewController.swift */; };
 		149B499A2266807C000DA33B /* AppBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B49992266807C000DA33B /* AppBrain.swift */; };
 		14D89579225D09060099AEC3 /* SVGObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D89578225D09060099AEC3 /* SVGObject.swift */; };
 		14D8957B225D1EFB0099AEC3 /* SVGLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D8957A225D1EFB0099AEC3 /* SVGLayer.swift */; };
+		14DC25D1228FFEAE004CDEAD /* MessagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC25D0228FFEAE004CDEAD /* MessagesHelper.swift */; };
 		14ED5940226322230094EF64 /* VoiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED593F226322230094EF64 /* VoiceManager.swift */; };
 		14ED594222633B240094EF64 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED594122633B240094EF64 /* BooksViewController.swift */; };
 		14F0B807226BC4E70094A1F4 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0B806226BC4E70094A1F4 /* NavigationManager.swift */; };
@@ -153,10 +157,14 @@
 		1438AC322257F17800ED68D4 /* AppFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		1438AC442257F49700ED68D4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1438AC462257F78D00ED68D4 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		1493557E228F658900F12A99 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		14935580228F659300F12A99 /* GendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GendarViewController.swift; sourceTree = "<group>"; };
+		14935582228F688400F12A99 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		149B49992266807C000DA33B /* AppBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBrain.swift; sourceTree = "<group>"; };
 		14C7176C2259493D00DD4B70 /* Al-Rafik-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Al-Rafik-Bridging-Header.h"; sourceTree = "<group>"; };
 		14D89578225D09060099AEC3 /* SVGObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGObject.swift; sourceTree = "<group>"; };
 		14D8957A225D1EFB0099AEC3 /* SVGLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGLayer.swift; sourceTree = "<group>"; };
+		14DC25D0228FFEAE004CDEAD /* MessagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesHelper.swift; sourceTree = "<group>"; };
 		14ED593F226322230094EF64 /* VoiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceManager.swift; sourceTree = "<group>"; };
 		14ED594122633B240094EF64 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		14F0B806226BC4E70094A1F4 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -323,6 +331,7 @@
 				1438ABF22257F15F00ED68D4 /* DateHelper.swift */,
 				14ED593F226322230094EF64 /* VoiceManager.swift */,
 				14F0B806226BC4E70094A1F4 /* NavigationManager.swift */,
+				14DC25D0228FFEAE004CDEAD /* MessagesHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -372,6 +381,9 @@
 			children = (
 				1438ABA3225547E800ED68D4 /* ViewController.swift */,
 				14ED594122633B240094EF64 /* BooksViewController.swift */,
+				1493557E228F658900F12A99 /* LanguageViewController.swift */,
+				14935580228F659300F12A99 /* GendarViewController.swift */,
+				14935582228F688400F12A99 /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -563,6 +575,7 @@
 				14216A49225F831100A121FD /* Styles.swift in Sources */,
 				14ED5940226322230094EF64 /* VoiceManager.swift in Sources */,
 				1438ABB62257DBD500ED68D4 /* FilesHelper.swift in Sources */,
+				14DC25D1228FFEAE004CDEAD /* MessagesHelper.swift in Sources */,
 				14216A48225F831100A121FD /* XUILabel.swift in Sources */,
 				14216A5A225F831100A121FD /* UIViewController.swift in Sources */,
 				14216A5D225F831100A121FD /* RoundedButton.swift in Sources */,
@@ -576,6 +589,7 @@
 				1438AC452257F49700ED68D4 /* Constants.swift in Sources */,
 				14216A4A225F831100A121FD /* Collection.swift in Sources */,
 				149B499A2266807C000DA33B /* AppBrain.swift in Sources */,
+				1493557F228F658900F12A99 /* LanguageViewController.swift in Sources */,
 				14ED594222633B240094EF64 /* BooksViewController.swift in Sources */,
 				14216A5E225F831100A121FD /* UITextView.swift in Sources */,
 				14216A52225F831100A121FD /* UIView2.swift in Sources */,
@@ -587,9 +601,11 @@
 				1438ABC02257F12100ED68D4 /* Book.swift in Sources */,
 				14216A57225F831100A121FD /* String.swift in Sources */,
 				1438AC432257F17800ED68D4 /* AppFonts.swift in Sources */,
+				14935583228F688400F12A99 /* SearchViewController.swift in Sources */,
 				14216A62225F831100A121FD /* UIStoryBoard.swift in Sources */,
 				14D8957B225D1EFB0099AEC3 /* SVGLayer.swift in Sources */,
 				14216A4D225F831100A121FD /* UIColor.swift in Sources */,
+				14935581228F659300F12A99 /* GendarViewController.swift in Sources */,
 				14216A51225F831100A121FD /* XUIButton.swift in Sources */,
 				1438ABF92257F16000ED68D4 /* DataStore.swift in Sources */,
 				14216A5C225F831100A121FD /* UIApplication.swift in Sources */,

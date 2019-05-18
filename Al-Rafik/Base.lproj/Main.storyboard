@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tOF-ao-Cav">
-    <device id="ipad10_5" orientation="landscape">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GE5-sl-UN2">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Al_Rafik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDp-H6-SNe">
-                                <rect key="frame" x="0.0" y="0.0" width="912" height="834"/>
+                                <rect key="frame" x="0.0" y="0.0" width="214" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -27,7 +27,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGT-UK-cze">
-                                <rect key="frame" x="912" y="0.0" width="200" height="834"/>
+                                <rect key="frame" x="214" y="0.0" width="200" height="736"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="H3e-dr-AFU"/>
@@ -76,7 +76,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d19-mC-g3G" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ajZ-Sd-50G">
-                        <rect key="frame" x="0.0" y="20" width="1112" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -88,19 +88,19 @@
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="93.103448275862078"/>
         </scene>
-        <!--View Controller-->
+        <!--Language View Controller-->
         <scene sceneID="lXK-fV-nDn">
             <objects>
-                <viewController id="WH6-d9-G2O" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LanguageViewController" id="WH6-d9-G2O" customClass="LanguageViewController" customModule="Al_Rafik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sjd-OL-ICR">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fKS-Ak-auk">
-                                <rect key="frame" x="32" y="155" width="1048" height="524"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uv-bv-EZO">
-                                        <rect key="frame" x="0.0" y="0.0" width="520" height="524"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="203" height="672"/>
                                         <state key="normal" title="AR">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -115,9 +115,12 @@
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="setArabic:" destination="WH6-d9-G2O" eventType="touchUpInside" id="SDy-1i-GBg"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Zr-gv-Xdp">
-                                        <rect key="frame" x="528" y="0.0" width="520" height="524"/>
+                                        <rect key="frame" x="211" y="0.0" width="203" height="672"/>
                                         <state key="normal" title="EN">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -132,39 +135,41 @@
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="setEnglish:" destination="WH6-d9-G2O" eventType="touchUpInside" id="DV3-38-vsb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="fKS-Ak-auk" secondAttribute="height" multiplier="2:1" id="o7o-mL-tmQ"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fKS-Ak-auk" firstAttribute="leading" secondItem="mgj-hO-Am8" secondAttribute="leading" constant="32" id="LfN-qI-yIg"/>
-                            <constraint firstItem="mgj-hO-Am8" firstAttribute="trailing" secondItem="fKS-Ak-auk" secondAttribute="trailing" constant="32" id="VeP-Jb-PcN"/>
-                            <constraint firstItem="fKS-Ak-auk" firstAttribute="centerY" secondItem="Sjd-OL-ICR" secondAttribute="centerY" id="hz0-1o-7JR"/>
+                            <constraint firstItem="fKS-Ak-auk" firstAttribute="leading" secondItem="mgj-hO-Am8" secondAttribute="leading" id="Oql-lR-tXF"/>
+                            <constraint firstItem="fKS-Ak-auk" firstAttribute="top" secondItem="mgj-hO-Am8" secondAttribute="top" id="c8x-DS-age"/>
+                            <constraint firstItem="mgj-hO-Am8" firstAttribute="bottom" secondItem="fKS-Ak-auk" secondAttribute="bottom" id="q55-m0-Muv"/>
+                            <constraint firstItem="mgj-hO-Am8" firstAttribute="trailing" secondItem="fKS-Ak-auk" secondAttribute="trailing" id="tYQ-hn-8hE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mgj-hO-Am8"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6mC-yF-gG6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxJ-Mw-b0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="134" y="833"/>
         </scene>
-        <!--View Controller-->
+        <!--Gendar View Controller-->
         <scene sceneID="Lp8-ga-54i">
             <objects>
-                <viewController id="l4a-97-vuA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GendarViewController" id="l4a-97-vuA" customClass="GendarViewController" customModule="Al_Rafik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UfE-6x-Knf">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f0m-ft-yL4">
-                                <rect key="frame" x="32" y="155" width="1048" height="524"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pl4-TH-kUy">
-                                        <rect key="frame" x="0.0" y="0.0" width="520" height="524"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="203" height="716"/>
                                         <state key="normal" title="Male">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -179,9 +184,12 @@
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="setMale:" destination="l4a-97-vuA" eventType="touchUpInside" id="PFc-t4-90j"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdZ-ea-DV4">
-                                        <rect key="frame" x="528" y="0.0" width="520" height="524"/>
+                                        <rect key="frame" x="211" y="0.0" width="203" height="716"/>
                                         <state key="normal" title="Female">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -196,25 +204,157 @@
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="setFemale:" destination="l4a-97-vuA" eventType="touchUpInside" id="0q6-Ez-ttN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="f0m-ft-yL4" secondAttribute="height" multiplier="2:1" id="n3O-ct-Eq9"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SOe-4X-5dA" firstAttribute="trailing" secondItem="f0m-ft-yL4" secondAttribute="trailing" constant="32" id="TJU-Pi-C76"/>
-                            <constraint firstItem="f0m-ft-yL4" firstAttribute="centerY" secondItem="UfE-6x-Knf" secondAttribute="centerY" id="dB1-GR-AlN"/>
-                            <constraint firstItem="f0m-ft-yL4" firstAttribute="leading" secondItem="SOe-4X-5dA" secondAttribute="leading" constant="32" id="g1f-5g-rfE"/>
+                            <constraint firstItem="SOe-4X-5dA" firstAttribute="trailing" secondItem="f0m-ft-yL4" secondAttribute="trailing" id="21S-5B-trB"/>
+                            <constraint firstItem="f0m-ft-yL4" firstAttribute="leading" secondItem="SOe-4X-5dA" secondAttribute="leading" id="e2J-Sg-HNp"/>
+                            <constraint firstItem="f0m-ft-yL4" firstAttribute="top" secondItem="SOe-4X-5dA" secondAttribute="top" id="exs-9r-Liu"/>
+                            <constraint firstItem="SOe-4X-5dA" firstAttribute="bottom" secondItem="f0m-ft-yL4" secondAttribute="bottom" id="pUQ-ni-dBg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SOe-4X-5dA"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRp-x6-6LJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="833"/>
+            <point key="canvasLocation" x="858" y="832"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="yUg-gi-Ity">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="v1T-AO-9el" customClass="SearchViewController" customModule="Al_Rafik" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="adX-u4-uek">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SxR-eK-3F0">
+                                <rect key="frame" x="32" y="52" width="350" height="570"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t6a-Q4-27O">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="190"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2P-Vf-FDh">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="190"/>
+                                                <gestureRecognizers/>
+                                                <state key="normal" title="1"/>
+                                                <connections>
+                                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="bYf-RQ-JTS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqC-mf-XsM">
+                                                <rect key="frame" x="120" y="0.0" width="110" height="190"/>
+                                                <gestureRecognizers/>
+                                                <state key="normal" title="2"/>
+                                                <connections>
+                                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="M2d-4b-JGK"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZp-gi-qFk">
+                                                <rect key="frame" x="240" y="0.0" width="110" height="190"/>
+                                                <gestureRecognizers/>
+                                                <state key="normal" title="3"/>
+                                                <connections>
+                                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="MoO-kx-quq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <gestureRecognizers/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-kz-n5n">
+                                        <rect key="frame" x="0.0" y="190" width="350" height="190"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXb-CQ-5T3">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="190"/>
+                                                <gestureRecognizers/>
+                                                <state key="normal" title="4"/>
+                                                <connections>
+                                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="7Kb-lr-M6P"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebs-Wy-Th9">
+                                                <rect key="frame" x="120" y="0.0" width="110" height="190"/>
+                                                <gestureRecognizers/>
+                                                <state key="normal" title="5"/>
+                                                <connections>
+                                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="4ei-Nm-jkM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r82-NP-JSA">
+                                                <rect key="frame" x="240" y="0.0" width="110" height="190"/>
+                                                <gestureRecognizers/>
+                                                <state key="normal" title="6"/>
+                                                <connections>
+                                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="yaI-bp-bkL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yK1-QJ-rsO">
+                                        <rect key="frame" x="0.0" y="380" width="350" height="190"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TY-jj-gbn">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="190"/>
+                                                <gestureRecognizers/>
+                                                <state key="normal" title="7"/>
+                                                <connections>
+                                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="BpE-od-IpM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgE-vz-HMd">
+                                                <rect key="frame" x="120" y="0.0" width="110" height="190"/>
+                                                <gestureRecognizers/>
+                                                <state key="normal" title="8"/>
+                                                <connections>
+                                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="ePZ-hp-owc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHU-Z3-WRq">
+                                                <rect key="frame" x="240" y="0.0" width="110" height="190"/>
+                                                <gestureRecognizers/>
+                                                <state key="normal" title="9"/>
+                                                <connections>
+                                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="sVC-R4-BVR"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEV-GP-q2J">
+                                <rect key="frame" x="32" y="654" width="350" height="50"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nC4-eb-a07"/>
+                                </constraints>
+                                <state key="normal" title="Enter"/>
+                                <connections>
+                                    <action selector="setNumber:" destination="v1T-AO-9el" eventType="touchUpInside" id="6GH-13-6ZM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SxR-eK-3F0" firstAttribute="top" secondItem="kdG-Cx-vbk" secondAttribute="top" constant="32" id="5Yy-mZ-IuG"/>
+                            <constraint firstItem="aEV-GP-q2J" firstAttribute="leading" secondItem="kdG-Cx-vbk" secondAttribute="leading" constant="32" id="KS5-vK-dA2"/>
+                            <constraint firstItem="kdG-Cx-vbk" firstAttribute="bottom" secondItem="aEV-GP-q2J" secondAttribute="bottom" constant="32" id="PKO-Ez-jvg"/>
+                            <constraint firstItem="kdG-Cx-vbk" firstAttribute="trailing" secondItem="SxR-eK-3F0" secondAttribute="trailing" constant="32" id="bjw-3E-tnO"/>
+                            <constraint firstItem="SxR-eK-3F0" firstAttribute="leading" secondItem="kdG-Cx-vbk" secondAttribute="leading" constant="32" id="cm7-wj-Up3"/>
+                            <constraint firstItem="kdG-Cx-vbk" firstAttribute="trailing" secondItem="aEV-GP-q2J" secondAttribute="trailing" constant="32" id="fkh-Lx-7lA"/>
+                            <constraint firstItem="aEV-GP-q2J" firstAttribute="top" secondItem="SxR-eK-3F0" secondAttribute="bottom" constant="32" id="vSm-pe-JMS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kdG-Cx-vbk"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="k5Z-Wl-Wet"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QOg-SJ-WrO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2528.985507246377" y="831.52173913043487"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Pj7-Ms-0Ul">
@@ -222,7 +362,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tOF-ao-Cav" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5iK-cO-Mwj">
-                        <rect key="frame" x="0.0" y="20" width="1112" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -239,22 +379,22 @@
             <objects>
                 <viewController id="cvK-Mh-ZEK" customClass="BooksViewController" customModule="Al_Rafik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8nT-hP-GcZ">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MTB-PP-DTw">
-                                <rect key="frame" x="0.0" y="70" width="1112" height="764"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" textLabel="lpx-mf-XrO" rowHeight="64" style="IBUITableViewCellStyleDefault" id="QiX-BG-Fgn">
-                                        <rect key="frame" x="0.0" y="28" width="1112" height="64"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QiX-BG-Fgn" id="5yW-QO-gtx">
-                                            <rect key="frame" x="0.0" y="0.0" width="1112" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="63.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lpx-mf-XrO">
-                                                    <rect key="frame" x="15" y="0.0" width="1082" height="63.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="63.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -287,6 +427,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QmH-Kj-RZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1553" y="-577"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ytV-IG-fhr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GE5-sl-UN2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pJu-IW-ILL">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WH6-d9-G2O" kind="relationship" relationship="rootViewController" id="Rdi-FC-f4s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sSE-RS-WNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-586" y="832"/>
         </scene>
     </scenes>
 </document>

@@ -9,7 +9,7 @@ import UIKit
 
 
 // MARK: Application configuration
-struct AppConfig {
+class AppConfig {
     
     // domain
     static let appBaseDevURL = "http://104.217.253.15:7000/api"
@@ -35,12 +35,44 @@ struct AppConfig {
     static let passwordLength = 6
     
     // current application language
-    static var currentLanguage:AppLanguage {
-        let locale = NSLocale.current.languageCode
-        if (locale == "ar") {
-            return .arabic
+    static var currentLanguage:AppLanguage = .english
+//    ?{
+//        set{
+//            DataStore.shared.language = newValue?.rawValue
+//        }
+//
+//        get{
+//            return AppLanguage(rawValue: DataStore.shared.language ?? "en-US")
+//        }
+//    }
+    
+    static var currentGendar:Gendar = .female
+//    ? {
+//        get{
+//            return Gendar(rawValue: DataStore.shared.gendar ?? "male")
+//        }
+//        set{
+//            DataStore.shared.gendar = newValue?.rawValue
+//        }
+//
+//    }
+//
+    static var currentVoice:VoiceType{
+        let lang = currentLanguage
+        let gendar = currentGendar
+        if lang == .arabic , gendar == .male{
+            return .maleAR
         }
-        return .english
+        if lang == .english , gendar == .male{
+            return .maleEN
+        }
+        if lang == .arabic , gendar == .female{
+            return .femaleAR
+        }
+        if lang == .english , gendar == .female{
+            return .femaleEN
+        }
+        return .femaleEN
     }
     
     /// Set navigation bar style, text and color
@@ -91,9 +123,9 @@ public enum AppMediaType :String{
 
 
 // MARK: Application language
-enum AppLanguage{
-    case english
-    case arabic
+enum AppLanguage:String{
+    case english = "en-US"
+    case arabic  = "ar-SA"
     
     var langCode:String {
         switch self {

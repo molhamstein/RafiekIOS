@@ -11,7 +11,38 @@ import AVFoundation
 import Speech
 
 
+enum Gendar:String{
+    case male = "male"
+    case female = "female"
+}
+
+enum VoiceType{
+    case maleAR
+    case femaleAR
+    case maleEN
+    case femaleEN
+    
+    var identifire:String{
+        switch self {
+        case .maleAR:
+            return "ar-SA"
+        case .maleEN:
+            return "en-GB"
+        case .femaleAR:
+            return "ar-SA"
+        case .femaleEN:
+            return "en-US"
+        
+        }
+    }
+    
+}
+
+
 class VoiceManager:NSObject{
+    
+    typealias CompletionBlock = ((Bool) -> ())
+    var completionBlock: CompletionBlock?
     
     public var player:AVAudioPlayer?
     public var speechSynthesizer:AVSpeechSynthesizer?
@@ -19,7 +50,7 @@ class VoiceManager:NSObject{
     var current:Int = 0
     var playList:Bool = false
     var finished = false
-    
+    var isSpeaking = false
     public static var shared = VoiceManager()
     
     override init() {
@@ -28,36 +59,34 @@ class VoiceManager:NSObject{
         speechSynthesizer?.delegate = self
     }
     
-    func speek(msg:String,completionBlock: @escaping () -> () = {  }){
+    func speek(_ message: String, completion: CompletionBlock? = nil){
         // Line 1. Create an instance of AVSpeechSynthesizer.
-       finished = false
+        finished = false
+        speechSynthesizer?.stopSpeaking(at: .immediate)
+        completionBlock?(false)
+        completionBlock = completion
         // Line 2. Create an instance of AVSpeechUtterance and pass in a String to be spoken.
-        let speechUtterance: AVSpeechUtterance = AVSpeechUtterance(string: msg)
+        let speechUtterance: AVSpeechUtterance = AVSpeechUtterance(string: message)
         //Line 3. Specify the speech utterance rate. 1 = speaking extremely the higher the values the slower speech patterns. The default rate, AVSpeechUtteranceDefaultSpeechRate is 0.5
         speechUtterance.rate = 0.5
+        speechUtterance.pitchMultiplier = 1.2
         // Line 4. Specify the voice. It is explicitly set to English here, but it will use the device default if not specified.
-        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        // Line 5. Pass in the urrerance to the synthesizer to actually speak.
-        speechSynthesizer?.speak(speechUtterance)
-
+        //ar-SA
+        let voice = AVSpeechSynthesisVoice(language: AppConfig.currentVoice.identifire)
         
-        DispatchQueue.main.async {
-//                    while(true){
-//                        if (self.finished){
-//                            completionBlock()
-//                            break;
-//                        }
-//                    }
-        }
-        print("xx")
+        speechUtterance.voice = voice
+        
+        // Line 5. Pass in the urrerance to the synthesizer to actually speak.
+        isSpeaking = true
+        self.speechSynthesizer?.speak(speechUtterance)
+    
     }
     
     func speakTextList(){
         if textList != nil{
             playList = true
             current = 0
-            speek(msg: textList?[current] ?? ""){
-            }
+            speek(textList?[current] ?? ""){ _ in}
         }else{
             playList = false
         }
@@ -77,7 +106,7 @@ class VoiceManager:NSObject{
             player?.play()
             
         } catch {
-            self.speek(msg: "I Can not play this file"){}
+            self.speek("I Can not play this file"){_ in }
         }
     }
     
@@ -98,10 +127,13 @@ extension VoiceManager:AVSpeechSynthesizerDelegate{
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         finished = true
         print("finished")
+        isSpeaking = false
+        completionBlock?(true)
+        completionBlock = nil
         if playList{
             current += 1
             if let cnt = textList?.count , current < cnt {
-                speek(msg: textList?[current] ?? ""){}
+                speek(textList?[current] ?? ""){_ in }
             }else{
                 playList = false
                 textList = nil
@@ -109,3 +141,4 @@ extension VoiceManager:AVSpeechSynthesizerDelegate{
         }
     }
 }
+

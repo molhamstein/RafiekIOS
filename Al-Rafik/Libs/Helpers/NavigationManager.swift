@@ -16,7 +16,8 @@ protocol NavigationManagerDelegate {
     func playMenuActions()
     func trigerMenuAction(num:Int)
 }
-struct NavigationManager{
+
+class NavigationManager{
     
     static var delegate:NavigationManagerDelegate?
     

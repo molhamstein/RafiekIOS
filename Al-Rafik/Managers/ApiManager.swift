@@ -86,6 +86,45 @@ class ApiManager: NSObject {
         }
     }
     
+    ///api/books?filter[where][code][like]=code
+    func getBooksBy(code:String,completionBlock: @escaping (_ success: Bool, _ error: ServerError?, _ result:[Book]) -> Void) {
+        // url & parameters
+        let signInURL = "\(baseURL)/books?filter[where][code][like]=\(code)"
+        // build request
+        Alamofire.request(signInURL, method: .get).responseString { (responseObject) -> Void in
+            print(responseObject)
+            if responseObject.result.isSuccess {
+                let jsonResponse = JSON(responseObject.result.value!)
+                print(jsonResponse)
+                if let code = responseObject.response?.statusCode, code >= 400 {
+                    let serverError = ServerError(json: jsonResponse) ?? ServerError.unknownError
+                    completionBlock(false , serverError, [])
+                } else {
+                    if let dic = jsonResponse.rawString()?.data(using: String.Encoding.utf8){
+                        let json = JSON(dic)
+                        if let array = json.array{
+                            let books = array.map{Book(json: $0)}
+                            completionBlock(true,nil,books)
+                        }else{
+                            completionBlock(false, ServerError.unknownError, [])
+                        }
+                        
+                    }else{
+                        completionBlock(false, ServerError.unknownError, [])
+                    }
+                    
+                }
+            }
+            // Network error request time out or server error with no payload
+            if responseObject.result.isFailure {
+                if let code = responseObject.response?.statusCode, code >= 400 {
+                    completionBlock(false, ServerError.unknownError, [])
+                } else {
+                    completionBlock(false, ServerError.connectionError, [])
+                }
+            }
+        }
+    }
     func downloadFile(file:String,fileName:String,completionBlock: @escaping (_ success: Bool, _ error: ServerError?,_ result:String?) -> Void) {
         let urlString = "\(baseURL)/books/download/\(file)"
         
