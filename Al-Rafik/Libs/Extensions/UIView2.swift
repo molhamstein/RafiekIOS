@@ -89,13 +89,13 @@ extension UIView {
         }
     }
     
-    func anchorWithConstantsToTop8(_ topview: UIView? = nil, leftview: UIView? = nil, bottomview: UIView? = nil, rightview: UIView? = nil,topattribute:NSLayoutAttribute? = nil,leftattribute:NSLayoutAttribute? = nil,bottomattribute:NSLayoutAttribute? = nil,rightattribute:NSLayoutAttribute? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0) {
+    func anchorWithConstantsToTop8(_ topview: UIView? = nil, leftview: UIView? = nil, bottomview: UIView? = nil, rightview: UIView? = nil,topattribute:NSLayoutConstraint.Attribute? = nil,leftattribute:NSLayoutConstraint.Attribute? = nil,bottomattribute:NSLayoutConstraint.Attribute? = nil,rightattribute:NSLayoutConstraint.Attribute? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0) {
         
         _ = anchor8(topview, topattribute: topattribute, topConstant: topConstant, leftview: leftview,leftattribute: leftattribute,leftConstant: leftConstant,bottomview: bottomview,bottomattribute: bottomattribute, bottomConstant: bottomConstant, rightview: rightview, rightattribute: rightattribute, rightConstant: rightConstant)
     }
     
     
-    func anchor8(_ topview: UIView? = nil,topattribute:NSLayoutAttribute? = nil, topConstant: CGFloat = 0,leftview: UIView? = nil,leftattribute:NSLayoutAttribute? = nil, leftConstant: CGFloat = 0,bottomview: UIView? = nil,bottomattribute:NSLayoutAttribute? = nil,bottomConstant: CGFloat = 0, rightview: UIView? = nil,rightattribute:NSLayoutAttribute? = nil,  rightConstant: CGFloat = 0, widthConstant: CGFloat = 0, heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+    func anchor8(_ topview: UIView? = nil,topattribute:NSLayoutConstraint.Attribute? = nil, topConstant: CGFloat = 0,leftview: UIView? = nil,leftattribute:NSLayoutConstraint.Attribute? = nil, leftConstant: CGFloat = 0,bottomview: UIView? = nil,bottomattribute:NSLayoutConstraint.Attribute? = nil,bottomConstant: CGFloat = 0, rightview: UIView? = nil,rightattribute:NSLayoutConstraint.Attribute? = nil,  rightConstant: CGFloat = 0, widthConstant: CGFloat = 0, heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         
         var anchors = [NSLayoutConstraint]()
@@ -104,8 +104,8 @@ extension UIView {
             
             if let topattreibute = topattribute{
                 anchors.append(NSLayoutConstraint(item: self,
-                                                  attribute: NSLayoutAttribute.top,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.top,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: topview,
                                                   attribute: topattreibute,
                                                   multiplier: 1.0,
@@ -119,8 +119,8 @@ extension UIView {
             
             if let leftattreibute = leftattribute{
                 anchors.append(NSLayoutConstraint(item: self,
-                                                  attribute: NSLayoutAttribute.leading,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.leading,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: leftview,
                                                   attribute: leftattreibute,
                                                   multiplier: 1.0,
@@ -134,8 +134,8 @@ extension UIView {
             
             if let rightattribute = rightattribute{
                 anchors.append(NSLayoutConstraint(item: self,
-                                                  attribute: NSLayoutAttribute.trailing,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.trailing,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: rightview,
                                                   attribute: rightattribute,
                                                   multiplier: 1.0,
@@ -148,8 +148,8 @@ extension UIView {
             
             if let bottomattribute = bottomattribute{
                 anchors.append(NSLayoutConstraint(item: self,
-                                                  attribute: NSLayoutAttribute.bottom,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.bottom,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: bottomview,
                                                   attribute: bottomattribute,
                                                   multiplier: 1.0,
@@ -161,10 +161,10 @@ extension UIView {
         if widthConstant > 0{
             
             anchors.append(NSLayoutConstraint(item: self,
-                                              attribute: NSLayoutAttribute.width,
-                                              relatedBy: NSLayoutRelation.equal,
+                                              attribute: NSLayoutConstraint.Attribute.width,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                               toItem: nil,
-                                              attribute: NSLayoutAttribute.width,
+                                              attribute: NSLayoutConstraint.Attribute.width,
                                               multiplier: 1.0,
                                               constant: widthConstant))
             
@@ -174,10 +174,10 @@ extension UIView {
         if heightConstant > 0{
             
             anchors.append(NSLayoutConstraint(item: self,
-                                              attribute: NSLayoutAttribute.height,
-                                              relatedBy: NSLayoutRelation.equal,
+                                              attribute: NSLayoutConstraint.Attribute.height,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                               toItem: nil,
-                                              attribute: NSLayoutAttribute.height,
+                                              attribute: NSLayoutConstraint.Attribute.height,
                                               multiplier: 1.0,
                                               constant: heightConstant))
             
@@ -191,7 +191,7 @@ extension UIView {
     
     
     
-    func anchor8_(_ topview: UIView? = nil,topattribute:NSLayoutAttribute? = nil,currentViewTopAttribute:NSLayoutAttribute? = nil,topConstant: CGFloat = 0,leftview: UIView? = nil,leftattribute:NSLayoutAttribute? = nil,currentViewleftAttribute:NSLayoutAttribute? = nil, leftConstant: CGFloat = 0,bottomview: UIView? = nil,bottomattribute:NSLayoutAttribute? = nil,currentViewbottomAttribute:NSLayoutAttribute? = nil,bottomConstant: CGFloat = 0, rightview: UIView? = nil,rightattribute:NSLayoutAttribute? = nil,currentViewrightAttribute:NSLayoutAttribute? = nil ,rightConstant: CGFloat = 0, widthConstant: CGFloat = 0, heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+    func anchor8_(_ topview: UIView? = nil,topattribute:NSLayoutConstraint.Attribute? = nil,currentViewTopAttribute:NSLayoutConstraint.Attribute? = nil,topConstant: CGFloat = 0,leftview: UIView? = nil,leftattribute:NSLayoutConstraint.Attribute? = nil,currentViewleftAttribute:NSLayoutConstraint.Attribute? = nil, leftConstant: CGFloat = 0,bottomview: UIView? = nil,bottomattribute:NSLayoutConstraint.Attribute? = nil,currentViewbottomAttribute:NSLayoutConstraint.Attribute? = nil,bottomConstant: CGFloat = 0, rightview: UIView? = nil,rightattribute:NSLayoutConstraint.Attribute? = nil,currentViewrightAttribute:NSLayoutConstraint.Attribute? = nil ,rightConstant: CGFloat = 0, widthConstant: CGFloat = 0, heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         
         var anchors = [NSLayoutConstraint]()
@@ -201,7 +201,7 @@ extension UIView {
             if let topattreibute = topattribute,let currentViewTopAttribute = currentViewTopAttribute{
                 anchors.append(NSLayoutConstraint(item: self,
                                                   attribute: currentViewTopAttribute,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: topview,
                                                   attribute: topattreibute,
                                                   multiplier: 1.0,
@@ -216,7 +216,7 @@ extension UIView {
             if let leftattreibute = leftattribute,let currentViewleftAttribute = currentViewleftAttribute{
                 anchors.append(NSLayoutConstraint(item: self,
                                                   attribute: currentViewleftAttribute,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: leftview,
                                                   attribute: leftattreibute,
                                                   multiplier: 1.0,
@@ -231,7 +231,7 @@ extension UIView {
             if let rightattribute = rightattribute , let currentViewrightAttribute = currentViewrightAttribute{
                 anchors.append(NSLayoutConstraint(item: self,
                                                   attribute: currentViewrightAttribute,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: rightview,
                                                   attribute: rightattribute,
                                                   multiplier: 1.0,
@@ -245,7 +245,7 @@ extension UIView {
             if let bottomattribute = bottomattribute , let currentViewbottomAttribute = currentViewbottomAttribute{
                 anchors.append(NSLayoutConstraint(item: self,
                                                   attribute: currentViewbottomAttribute,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: bottomview,
                                                   attribute: bottomattribute,
                                                   multiplier: 1.0,
@@ -257,10 +257,10 @@ extension UIView {
         if widthConstant > 0{
             
             anchors.append(NSLayoutConstraint(item: self,
-                                              attribute: NSLayoutAttribute.width,
-                                              relatedBy: NSLayoutRelation.equal,
+                                              attribute: NSLayoutConstraint.Attribute.width,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                               toItem: nil,
-                                              attribute: NSLayoutAttribute.width,
+                                              attribute: NSLayoutConstraint.Attribute.width,
                                               multiplier: 1.0,
                                               constant: widthConstant))
             
@@ -270,10 +270,10 @@ extension UIView {
         if heightConstant > 0{
             
             anchors.append(NSLayoutConstraint(item: self,
-                                              attribute: NSLayoutAttribute.height,
-                                              relatedBy: NSLayoutRelation.equal,
+                                              attribute: NSLayoutConstraint.Attribute.height,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                               toItem: nil,
-                                              attribute: NSLayoutAttribute.height,
+                                              attribute: NSLayoutConstraint.Attribute.height,
                                               multiplier: 1.0,
                                               constant: heightConstant))
             

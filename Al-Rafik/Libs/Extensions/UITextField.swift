@@ -19,7 +19,7 @@ extension UITextField {
         let border = CALayer()
         let height = CGFloat(1.0)
 
-        border.borderColor = AppColors.grayDark.cgColor
+        border.borderColor = UIColor.gray.cgColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - height , width:  screenWidth - 2 * padding, height: height)
         border.borderWidth = height
         self.layer.addSublayer(border)
@@ -59,7 +59,7 @@ extension UITextField {
         let screenWidth = screenSize.width
         let border = CALayer()
         let height = CGFloat(1.0)
-        border.borderColor = AppColors.grayXDark.cgColor
+        border.borderColor = UIColor.gray.cgColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - height - 5, width:  screenWidth - 2 * CGFloat(padding), height: height)
         border.borderWidth = height
         self.layer.addSublayer(border)
@@ -105,9 +105,9 @@ extension UITextField {
         button.setImage(img , for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         if (AppConfig.currentLanguage == .arabic) {
-            button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -16)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16)
         }else{
-            button.imageEdgeInsets = UIEdgeInsetsMake(0, -16, 0, 0)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         }
         
         
@@ -148,7 +148,7 @@ extension UITextField {
         if show{
             self.rightView = nil
             let activityIndicator:UIActivityIndicatorView =  UIActivityIndicatorView()
-            activityIndicator.activityIndicatorViewStyle = .gray
+            activityIndicator.style = .gray
             if (AppConfig.currentLanguage == .arabic) {
                 
                 activityIndicator.frame = CGRect(x: 16 , y: 0, width: 24, height: 24)
@@ -202,7 +202,7 @@ extension UITextField: UITextFieldDelegate{
     func donePressed(){
         self.superview?.endEditing(true)
     }
-    func cancelPressed(){
+    @objc func cancelPressed(){
         self.superview?.endEditing(true)
     }
     

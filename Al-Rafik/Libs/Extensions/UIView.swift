@@ -119,7 +119,7 @@ extension UIView {
     
     
     func applyStyleGredeant(){
-        applyGradient(colours: [AppColors.yellowLight,AppColors.yellowDark], direction: .diagonal)
+//        applyGradient(colours: [AppColors.yellowLight,AppColors.yellowDark], direction: .diagonal)
     }
     
     func removeGradientLayer() {

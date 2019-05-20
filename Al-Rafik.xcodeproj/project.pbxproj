@@ -7,35 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14216A46225F831100A121FD /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A26225F831100A121FD /* UIView.swift */; };
-		14216A47225F831100A121FD /* GCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 14216A27225F831100A121FD /* GCD.m */; };
-		14216A48225F831100A121FD /* XUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A28225F831100A121FD /* XUILabel.swift */; };
-		14216A49225F831100A121FD /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A29225F831100A121FD /* Styles.swift */; };
-		14216A4A225F831100A121FD /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A2A225F831100A121FD /* Collection.swift */; };
-		14216A4B225F831100A121FD /* UIBarItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A2B225F831100A121FD /* UIBarItemButton.swift */; };
-		14216A4C225F831100A121FD /* NSlayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A2C225F831100A121FD /* NSlayoutConstraint.swift */; };
-		14216A4D225F831100A121FD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A2D225F831100A121FD /* UIColor.swift */; };
-		14216A4E225F831100A121FD /* GradiantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A2E225F831100A121FD /* GradiantView.swift */; };
-		14216A4F225F831100A121FD /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A2F225F831100A121FD /* PinterestLayout.swift */; };
-		14216A50225F831100A121FD /* ShadowLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A32225F831100A121FD /* ShadowLineView.swift */; };
-		14216A51225F831100A121FD /* XUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A33225F831100A121FD /* XUIButton.swift */; };
-		14216A52225F831100A121FD /* UIView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A34225F831100A121FD /* UIView2.swift */; };
-		14216A53225F831100A121FD /* UIImageViewWithMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A35225F831100A121FD /* UIImageViewWithMask.swift */; };
-		14216A54225F831100A121FD /* XUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A37225F831100A121FD /* XUITextField.swift */; };
-		14216A55225F831100A121FD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A38225F831100A121FD /* UITextField.swift */; };
-		14216A56225F831100A121FD /* UITabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A39225F831100A121FD /* UITabBarItem.swift */; };
-		14216A57225F831100A121FD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A3A225F831100A121FD /* String.swift */; };
-		14216A58225F831100A121FD /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A3B225F831100A121FD /* ShadowView.swift */; };
-		14216A59225F831100A121FD /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A3C225F831100A121FD /* UIImage.swift */; };
-		14216A5A225F831100A121FD /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A3D225F831100A121FD /* UIViewController.swift */; };
-		14216A5B225F831100A121FD /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A3E225F831100A121FD /* UIImageView.swift */; };
-		14216A5C225F831100A121FD /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A3F225F831100A121FD /* UIApplication.swift */; };
-		14216A5D225F831100A121FD /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A40225F831100A121FD /* RoundedButton.swift */; };
-		14216A5E225F831100A121FD /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A41225F831100A121FD /* UITextView.swift */; };
-		14216A5F225F831100A121FD /* CAShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A42225F831100A121FD /* CAShapeLayer.swift */; };
-		14216A60225F831100A121FD /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A43225F831100A121FD /* UICollectionViewCell.swift */; };
-		14216A61225F831100A121FD /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14216A44225F831100A121FD /* PassthroughView.m */; };
-		14216A62225F831100A121FD /* UIStoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A45225F831100A121FD /* UIStoryBoard.swift */; };
 		14216A64225F91B100A121FD /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14216A63225F91B100A121FD /* Action.swift */; };
 		1438ABA2225547E800ED68D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438ABA1225547E800ED68D4 /* AppDelegate.swift */; };
 		1438ABA4225547E800ED68D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438ABA3225547E800ED68D4 /* ViewController.swift */; };
@@ -74,6 +45,35 @@
 		14935581228F659300F12A99 /* GendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14935580228F659300F12A99 /* GendarViewController.swift */; };
 		14935583228F688400F12A99 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14935582228F688400F12A99 /* SearchViewController.swift */; };
 		149B499A2266807C000DA33B /* AppBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B49992266807C000DA33B /* AppBrain.swift */; };
+		14B6D9FC2292BE0E00887FF2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9DC2292BE0C00887FF2 /* UIView.swift */; };
+		14B6D9FD2292BE0E00887FF2 /* XUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9DD2292BE0C00887FF2 /* XUILabel.swift */; };
+		14B6D9FE2292BE0E00887FF2 /* XUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9DF2292BE0C00887FF2 /* XUIButton.swift */; };
+		14B6D9FF2292BE0E00887FF2 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E02292BE0D00887FF2 /* UIImage.swift */; };
+		14B6DA002292BE0E00887FF2 /* ShadowLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E12292BE0D00887FF2 /* ShadowLineView.swift */; };
+		14B6DA012292BE0E00887FF2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E22292BE0D00887FF2 /* UITextField.swift */; };
+		14B6DA022292BE0E00887FF2 /* UITabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E32292BE0D00887FF2 /* UITabBarItem.swift */; };
+		14B6DA032292BE0E00887FF2 /* NSlayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E42292BE0D00887FF2 /* NSlayoutConstraint.swift */; };
+		14B6DA042292BE0E00887FF2 /* UIView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E52292BE0D00887FF2 /* UIView2.swift */; };
+		14B6DA052292BE0E00887FF2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E62292BE0D00887FF2 /* UIViewController.swift */; };
+		14B6DA062292BE0F00887FF2 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E72292BE0D00887FF2 /* PinterestLayout.swift */; };
+		14B6DA072292BE0F00887FF2 /* CAShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E82292BE0D00887FF2 /* CAShapeLayer.swift */; };
+		14B6DA082292BE0F00887FF2 /* GradiantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9E92292BE0D00887FF2 /* GradiantView.swift */; };
+		14B6DA092292BE0F00887FF2 /* UIImageViewWithMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9EA2292BE0D00887FF2 /* UIImageViewWithMask.swift */; };
+		14B6DA0A2292BE0F00887FF2 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9EB2292BE0D00887FF2 /* Styles.swift */; };
+		14B6DA0B2292BE0F00887FF2 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9EC2292BE0D00887FF2 /* UICollectionViewCell.swift */; };
+		14B6DA0C2292BE0F00887FF2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9EE2292BE0D00887FF2 /* UIColor.swift */; };
+		14B6DA0D2292BE0F00887FF2 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9EF2292BE0D00887FF2 /* UITextView.swift */; };
+		14B6DA0E2292BE0F00887FF2 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9F02292BE0D00887FF2 /* RoundedButton.swift */; };
+		14B6DA0F2292BE0F00887FF2 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9F12292BE0E00887FF2 /* UIApplication.swift */; };
+		14B6DA102292BE0F00887FF2 /* GCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9F22292BE0E00887FF2 /* GCD.m */; };
+		14B6DA112292BE0F00887FF2 /* UIBarItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9F32292BE0E00887FF2 /* UIBarItemButton.swift */; };
+		14B6DA122292BE0F00887FF2 /* UIStoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9F42292BE0E00887FF2 /* UIStoryBoard.swift */; };
+		14B6DA132292BE0F00887FF2 /* XUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9F52292BE0E00887FF2 /* XUITextField.swift */; };
+		14B6DA142292BE0F00887FF2 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9F62292BE0E00887FF2 /* ShadowView.swift */; };
+		14B6DA152292BE0F00887FF2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9F72292BE0E00887FF2 /* UIImageView.swift */; };
+		14B6DA162292BE0F00887FF2 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9F92292BE0E00887FF2 /* Collection.swift */; };
+		14B6DA172292BE0F00887FF2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9FA2292BE0E00887FF2 /* String.swift */; };
+		14B6DA182292BE0F00887FF2 /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9FB2292BE0E00887FF2 /* PassthroughView.m */; };
 		14D89579225D09060099AEC3 /* SVGObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D89578225D09060099AEC3 /* SVGObject.swift */; };
 		14D8957B225D1EFB0099AEC3 /* SVGLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D8957A225D1EFB0099AEC3 /* SVGLayer.swift */; };
 		14DC25D1228FFEAE004CDEAD /* MessagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC25D0228FFEAE004CDEAD /* MessagesHelper.swift */; };
@@ -90,37 +90,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14216A26225F831100A121FD /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		14216A27225F831100A121FD /* GCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCD.m; sourceTree = "<group>"; };
-		14216A28225F831100A121FD /* XUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XUILabel.swift; sourceTree = "<group>"; };
-		14216A29225F831100A121FD /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		14216A2A225F831100A121FD /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		14216A2B225F831100A121FD /* UIBarItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarItemButton.swift; sourceTree = "<group>"; };
-		14216A2C225F831100A121FD /* NSlayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSlayoutConstraint.swift; sourceTree = "<group>"; };
-		14216A2D225F831100A121FD /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		14216A2E225F831100A121FD /* GradiantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradiantView.swift; sourceTree = "<group>"; };
-		14216A2F225F831100A121FD /* PinterestLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
-		14216A31225F831100A121FD /* PassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughView.h; sourceTree = "<group>"; };
-		14216A32225F831100A121FD /* ShadowLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowLineView.swift; sourceTree = "<group>"; };
-		14216A33225F831100A121FD /* XUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XUIButton.swift; sourceTree = "<group>"; };
-		14216A34225F831100A121FD /* UIView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView2.swift; sourceTree = "<group>"; };
-		14216A35225F831100A121FD /* UIImageViewWithMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewWithMask.swift; sourceTree = "<group>"; };
-		14216A36225F831100A121FD /* GCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCD.h; sourceTree = "<group>"; };
-		14216A37225F831100A121FD /* XUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XUITextField.swift; sourceTree = "<group>"; };
-		14216A38225F831100A121FD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
-		14216A39225F831100A121FD /* UITabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarItem.swift; sourceTree = "<group>"; };
-		14216A3A225F831100A121FD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		14216A3B225F831100A121FD /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
-		14216A3C225F831100A121FD /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		14216A3D225F831100A121FD /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		14216A3E225F831100A121FD /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
-		14216A3F225F831100A121FD /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		14216A40225F831100A121FD /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		14216A41225F831100A121FD /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
-		14216A42225F831100A121FD /* CAShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAShapeLayer.swift; sourceTree = "<group>"; };
-		14216A43225F831100A121FD /* UICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
-		14216A44225F831100A121FD /* PassthroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassthroughView.m; sourceTree = "<group>"; };
-		14216A45225F831100A121FD /* UIStoryBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryBoard.swift; sourceTree = "<group>"; };
 		14216A63225F91B100A121FD /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		1438AB9E225547E800ED68D4 /* Al-Rafik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Al-Rafik.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1438ABA1225547E800ED68D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +130,37 @@
 		14935580228F659300F12A99 /* GendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GendarViewController.swift; sourceTree = "<group>"; };
 		14935582228F688400F12A99 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		149B49992266807C000DA33B /* AppBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBrain.swift; sourceTree = "<group>"; };
+		14B6D9DC2292BE0C00887FF2 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = "Al-Rafik/Libs/Extensions/UIView.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9DD2292BE0C00887FF2 /* XUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XUILabel.swift; path = "Al-Rafik/Libs/Extensions/XUILabel.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9DE2292BE0C00887FF2 /* GCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCD.h; path = "Al-Rafik/Libs/Extensions/GCD.h"; sourceTree = SOURCE_ROOT; };
+		14B6D9DF2292BE0C00887FF2 /* XUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XUIButton.swift; path = "Al-Rafik/Libs/Extensions/XUIButton.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E02292BE0D00887FF2 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImage.swift; path = "Al-Rafik/Libs/Extensions/UIImage.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E12292BE0D00887FF2 /* ShadowLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShadowLineView.swift; path = "Al-Rafik/Libs/Extensions/ShadowLineView.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E22292BE0D00887FF2 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextField.swift; path = "Al-Rafik/Libs/Extensions/UITextField.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E32292BE0D00887FF2 /* UITabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITabBarItem.swift; path = "Al-Rafik/Libs/Extensions/UITabBarItem.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E42292BE0D00887FF2 /* NSlayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSlayoutConstraint.swift; path = "Al-Rafik/Libs/Extensions/NSlayoutConstraint.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E52292BE0D00887FF2 /* UIView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView2.swift; path = "Al-Rafik/Libs/Extensions/UIView2.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E62292BE0D00887FF2 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = "Al-Rafik/Libs/Extensions/UIViewController.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E72292BE0D00887FF2 /* PinterestLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinterestLayout.swift; path = "Al-Rafik/Libs/Extensions/PinterestLayout.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E82292BE0D00887FF2 /* CAShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAShapeLayer.swift; path = "Al-Rafik/Libs/Extensions/CAShapeLayer.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9E92292BE0D00887FF2 /* GradiantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradiantView.swift; path = "Al-Rafik/Libs/Extensions/GradiantView.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9EA2292BE0D00887FF2 /* UIImageViewWithMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageViewWithMask.swift; path = "Al-Rafik/Libs/Extensions/UIImageViewWithMask.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9EB2292BE0D00887FF2 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Styles.swift; path = "Al-Rafik/Libs/Extensions/Styles.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9EC2292BE0D00887FF2 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewCell.swift; path = "Al-Rafik/Libs/Extensions/UICollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9EE2292BE0D00887FF2 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = "Al-Rafik/Libs/Extensions/UIColor.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9EF2292BE0D00887FF2 /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextView.swift; path = "Al-Rafik/Libs/Extensions/UITextView.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9F02292BE0D00887FF2 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedButton.swift; path = "Al-Rafik/Libs/Extensions/RoundedButton.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9F12292BE0E00887FF2 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplication.swift; path = "Al-Rafik/Libs/Extensions/UIApplication.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9F22292BE0E00887FF2 /* GCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCD.m; path = "Al-Rafik/Libs/Extensions/GCD.m"; sourceTree = SOURCE_ROOT; };
+		14B6D9F32292BE0E00887FF2 /* UIBarItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBarItemButton.swift; path = "Al-Rafik/Libs/Extensions/UIBarItemButton.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9F42292BE0E00887FF2 /* UIStoryBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIStoryBoard.swift; path = "Al-Rafik/Libs/Extensions/UIStoryBoard.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9F52292BE0E00887FF2 /* XUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XUITextField.swift; path = "Al-Rafik/Libs/Extensions/XUITextField.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9F62292BE0E00887FF2 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShadowView.swift; path = "Al-Rafik/Libs/Extensions/ShadowView.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9F72292BE0E00887FF2 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = "Al-Rafik/Libs/Extensions/UIImageView.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9F82292BE0E00887FF2 /* PassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PassthroughView.h; path = "Al-Rafik/Libs/Extensions/PassthroughView.h"; sourceTree = SOURCE_ROOT; };
+		14B6D9F92292BE0E00887FF2 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Collection.swift; path = "Al-Rafik/Libs/Extensions/Collection.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9FA2292BE0E00887FF2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = "Al-Rafik/Libs/Extensions/String.swift"; sourceTree = SOURCE_ROOT; };
+		14B6D9FB2292BE0E00887FF2 /* PassthroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PassthroughView.m; path = "Al-Rafik/Libs/Extensions/PassthroughView.m"; sourceTree = SOURCE_ROOT; };
 		14C7176C2259493D00DD4B70 /* Al-Rafik-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Al-Rafik-Bridging-Header.h"; sourceTree = "<group>"; };
 		14D89578225D09060099AEC3 /* SVGObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGObject.swift; sourceTree = "<group>"; };
 		14D8957A225D1EFB0099AEC3 /* SVGLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGLayer.swift; sourceTree = "<group>"; };
@@ -194,37 +194,38 @@
 		14216A25225F831100A121FD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				14216A26225F831100A121FD /* UIView.swift */,
-				14216A27225F831100A121FD /* GCD.m */,
-				14216A28225F831100A121FD /* XUILabel.swift */,
-				14216A29225F831100A121FD /* Styles.swift */,
-				14216A2A225F831100A121FD /* Collection.swift */,
-				14216A2B225F831100A121FD /* UIBarItemButton.swift */,
-				14216A2C225F831100A121FD /* NSlayoutConstraint.swift */,
-				14216A2D225F831100A121FD /* UIColor.swift */,
-				14216A2E225F831100A121FD /* GradiantView.swift */,
-				14216A2F225F831100A121FD /* PinterestLayout.swift */,
-				14216A31225F831100A121FD /* PassthroughView.h */,
-				14216A32225F831100A121FD /* ShadowLineView.swift */,
-				14216A33225F831100A121FD /* XUIButton.swift */,
-				14216A34225F831100A121FD /* UIView2.swift */,
-				14216A35225F831100A121FD /* UIImageViewWithMask.swift */,
-				14216A36225F831100A121FD /* GCD.h */,
-				14216A37225F831100A121FD /* XUITextField.swift */,
-				14216A38225F831100A121FD /* UITextField.swift */,
-				14216A39225F831100A121FD /* UITabBarItem.swift */,
-				14216A3A225F831100A121FD /* String.swift */,
-				14216A3B225F831100A121FD /* ShadowView.swift */,
-				14216A3C225F831100A121FD /* UIImage.swift */,
-				14216A3D225F831100A121FD /* UIViewController.swift */,
-				14216A3E225F831100A121FD /* UIImageView.swift */,
-				14216A3F225F831100A121FD /* UIApplication.swift */,
-				14216A40225F831100A121FD /* RoundedButton.swift */,
-				14216A41225F831100A121FD /* UITextView.swift */,
-				14216A42225F831100A121FD /* CAShapeLayer.swift */,
-				14216A43225F831100A121FD /* UICollectionViewCell.swift */,
-				14216A44225F831100A121FD /* PassthroughView.m */,
-				14216A45225F831100A121FD /* UIStoryBoard.swift */,
+				14B6D9E82292BE0D00887FF2 /* CAShapeLayer.swift */,
+				14B6D9F92292BE0E00887FF2 /* Collection.swift */,
+				14B6D9ED2292BE0D00887FF2 /* DesignableX */,
+				14B6D9DE2292BE0C00887FF2 /* GCD.h */,
+				14B6D9F22292BE0E00887FF2 /* GCD.m */,
+				14B6D9E92292BE0D00887FF2 /* GradiantView.swift */,
+				14B6D9E42292BE0D00887FF2 /* NSlayoutConstraint.swift */,
+				14B6D9F82292BE0E00887FF2 /* PassthroughView.h */,
+				14B6D9FB2292BE0E00887FF2 /* PassthroughView.m */,
+				14B6D9E72292BE0D00887FF2 /* PinterestLayout.swift */,
+				14B6D9F02292BE0D00887FF2 /* RoundedButton.swift */,
+				14B6D9E12292BE0D00887FF2 /* ShadowLineView.swift */,
+				14B6D9F62292BE0E00887FF2 /* ShadowView.swift */,
+				14B6D9FA2292BE0E00887FF2 /* String.swift */,
+				14B6D9EB2292BE0D00887FF2 /* Styles.swift */,
+				14B6D9F12292BE0E00887FF2 /* UIApplication.swift */,
+				14B6D9F32292BE0E00887FF2 /* UIBarItemButton.swift */,
+				14B6D9EC2292BE0D00887FF2 /* UICollectionViewCell.swift */,
+				14B6D9EE2292BE0D00887FF2 /* UIColor.swift */,
+				14B6D9E02292BE0D00887FF2 /* UIImage.swift */,
+				14B6D9F72292BE0E00887FF2 /* UIImageView.swift */,
+				14B6D9EA2292BE0D00887FF2 /* UIImageViewWithMask.swift */,
+				14B6D9F42292BE0E00887FF2 /* UIStoryBoard.swift */,
+				14B6D9E32292BE0D00887FF2 /* UITabBarItem.swift */,
+				14B6D9E22292BE0D00887FF2 /* UITextField.swift */,
+				14B6D9EF2292BE0D00887FF2 /* UITextView.swift */,
+				14B6D9DC2292BE0C00887FF2 /* UIView.swift */,
+				14B6D9E52292BE0D00887FF2 /* UIView2.swift */,
+				14B6D9E62292BE0D00887FF2 /* UIViewController.swift */,
+				14B6D9DF2292BE0C00887FF2 /* XUIButton.swift */,
+				14B6D9DD2292BE0C00887FF2 /* XUILabel.swift */,
+				14B6D9F52292BE0E00887FF2 /* XUITextField.swift */,
 			);
 			name = Extensions;
 			path = ../../../GlobaPages/GlobalPages/Classes/Libs/Extensions;
@@ -375,6 +376,14 @@
 			);
 			path = Cairo;
 			sourceTree = "<group>";
+		};
+		14B6D9ED2292BE0D00887FF2 /* DesignableX */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DesignableX;
+			path = "Al-Rafik/Libs/Extensions/DesignableX";
+			sourceTree = SOURCE_ROOT;
 		};
 		14F4547F226F98A7001B1EDA /* Controllers */ = {
 			isa = PBXGroup;
@@ -558,64 +567,64 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14216A5F225F831100A121FD /* CAShapeLayer.swift in Sources */,
-				14216A53225F831100A121FD /* UIImageViewWithMask.swift in Sources */,
+				14B6DA172292BE0F00887FF2 /* String.swift in Sources */,
 				14F98C00225F9724009CB31A /* Control.swift in Sources */,
-				14216A46225F831100A121FD /* UIView.swift in Sources */,
 				14F4547E226F9566001B1EDA /* AlertsManager.swift in Sources */,
 				1438AC332257F17800ED68D4 /* AppColors.swift in Sources */,
 				1438ABF82257F16000ED68D4 /* ApiManager.swift in Sources */,
 				1438ABC22257F13300ED68D4 /* BaseModel.swift in Sources */,
 				1438ABB82257E27100ED68D4 /* ArchiveHelper.swift in Sources */,
+				14B6DA152292BE0F00887FF2 /* UIImageView.swift in Sources */,
 				14F4547C226F5E12001B1EDA /* Direction.swift in Sources */,
 				1438ABA4225547E800ED68D4 /* ViewController.swift in Sources */,
-				14216A60225F831100A121FD /* UICollectionViewCell.swift in Sources */,
-				14216A4B225F831100A121FD /* UIBarItemButton.swift in Sources */,
-				14216A54225F831100A121FD /* XUITextField.swift in Sources */,
-				14216A49225F831100A121FD /* Styles.swift in Sources */,
+				14B6DA0F2292BE0F00887FF2 /* UIApplication.swift in Sources */,
+				14B6D9FD2292BE0E00887FF2 /* XUILabel.swift in Sources */,
 				14ED5940226322230094EF64 /* VoiceManager.swift in Sources */,
 				1438ABB62257DBD500ED68D4 /* FilesHelper.swift in Sources */,
+				14B6DA0A2292BE0F00887FF2 /* Styles.swift in Sources */,
+				14B6D9FC2292BE0E00887FF2 /* UIView.swift in Sources */,
+				14B6D9FF2292BE0E00887FF2 /* UIImage.swift in Sources */,
 				14DC25D1228FFEAE004CDEAD /* MessagesHelper.swift in Sources */,
-				14216A48225F831100A121FD /* XUILabel.swift in Sources */,
-				14216A5A225F831100A121FD /* UIViewController.swift in Sources */,
-				14216A5D225F831100A121FD /* RoundedButton.swift in Sources */,
-				14216A56225F831100A121FD /* UITabBarItem.swift in Sources */,
-				14216A47225F831100A121FD /* GCD.m in Sources */,
+				14B6DA022292BE0E00887FF2 /* UITabBarItem.swift in Sources */,
+				14B6DA042292BE0E00887FF2 /* UIView2.swift in Sources */,
+				14B6DA072292BE0F00887FF2 /* CAShapeLayer.swift in Sources */,
 				1438ABFB2257F16000ED68D4 /* Actions.swift in Sources */,
-				14216A55225F831100A121FD /* UITextField.swift in Sources */,
-				14216A50225F831100A121FD /* ShadowLineView.swift in Sources */,
+				14B6DA122292BE0F00887FF2 /* UIStoryBoard.swift in Sources */,
+				14B6DA102292BE0F00887FF2 /* GCD.m in Sources */,
+				14B6DA032292BE0E00887FF2 /* NSlayoutConstraint.swift in Sources */,
 				1438ABC52257F14000ED68D4 /* AbstractController.swift in Sources */,
-				14216A4C225F831100A121FD /* NSlayoutConstraint.swift in Sources */,
+				14B6DA012292BE0E00887FF2 /* UITextField.swift in Sources */,
+				14B6DA092292BE0F00887FF2 /* UIImageViewWithMask.swift in Sources */,
+				14B6DA062292BE0F00887FF2 /* PinterestLayout.swift in Sources */,
+				14B6DA052292BE0E00887FF2 /* UIViewController.swift in Sources */,
+				14B6DA002292BE0E00887FF2 /* ShadowLineView.swift in Sources */,
 				1438AC452257F49700ED68D4 /* Constants.swift in Sources */,
-				14216A4A225F831100A121FD /* Collection.swift in Sources */,
 				149B499A2266807C000DA33B /* AppBrain.swift in Sources */,
 				1493557F228F658900F12A99 /* LanguageViewController.swift in Sources */,
+				14B6DA132292BE0F00887FF2 /* XUITextField.swift in Sources */,
 				14ED594222633B240094EF64 /* BooksViewController.swift in Sources */,
-				14216A5E225F831100A121FD /* UITextView.swift in Sources */,
-				14216A52225F831100A121FD /* UIView2.swift in Sources */,
-				14216A59225F831100A121FD /* UIImage.swift in Sources */,
-				14216A4F225F831100A121FD /* PinterestLayout.swift in Sources */,
-				14216A5B225F831100A121FD /* UIImageView.swift in Sources */,
 				14216A64225F91B100A121FD /* Action.swift in Sources */,
 				1438AC1B2257F16000ED68D4 /* DateHelper.swift in Sources */,
+				14B6DA142292BE0F00887FF2 /* ShadowView.swift in Sources */,
+				14B6DA0B2292BE0F00887FF2 /* UICollectionViewCell.swift in Sources */,
+				14B6DA0C2292BE0F00887FF2 /* UIColor.swift in Sources */,
+				14B6DA182292BE0F00887FF2 /* PassthroughView.m in Sources */,
+				14B6DA112292BE0F00887FF2 /* UIBarItemButton.swift in Sources */,
 				1438ABC02257F12100ED68D4 /* Book.swift in Sources */,
-				14216A57225F831100A121FD /* String.swift in Sources */,
 				1438AC432257F17800ED68D4 /* AppFonts.swift in Sources */,
 				14935583228F688400F12A99 /* SearchViewController.swift in Sources */,
-				14216A62225F831100A121FD /* UIStoryBoard.swift in Sources */,
 				14D8957B225D1EFB0099AEC3 /* SVGLayer.swift in Sources */,
-				14216A4D225F831100A121FD /* UIColor.swift in Sources */,
 				14935581228F659300F12A99 /* GendarViewController.swift in Sources */,
-				14216A51225F831100A121FD /* XUIButton.swift in Sources */,
 				1438ABF92257F16000ED68D4 /* DataStore.swift in Sources */,
-				14216A5C225F831100A121FD /* UIApplication.swift in Sources */,
+				14B6DA162292BE0F00887FF2 /* Collection.swift in Sources */,
+				14B6DA0D2292BE0F00887FF2 /* UITextView.swift in Sources */,
 				14F0B807226BC4E70094A1F4 /* NavigationManager.swift in Sources */,
+				14B6D9FE2292BE0E00887FF2 /* XUIButton.swift in Sources */,
+				14B6DA0E2292BE0F00887FF2 /* RoundedButton.swift in Sources */,
 				1438ABA2225547E800ED68D4 /* AppDelegate.swift in Sources */,
 				14D89579225D09060099AEC3 /* SVGObject.swift in Sources */,
-				14216A4E225F831100A121FD /* GradiantView.swift in Sources */,
-				14216A58225F831100A121FD /* ShadowView.swift in Sources */,
+				14B6DA082292BE0F00887FF2 /* GradiantView.swift in Sources */,
 				1438AC472257F78D00ED68D4 /* Page.swift in Sources */,
-				14216A61225F831100A121FD /* PassthroughView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
