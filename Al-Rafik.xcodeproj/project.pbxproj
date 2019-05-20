@@ -196,7 +196,6 @@
 			children = (
 				14B6D9E82292BE0D00887FF2 /* CAShapeLayer.swift */,
 				14B6D9F92292BE0E00887FF2 /* Collection.swift */,
-				14B6D9ED2292BE0D00887FF2 /* DesignableX */,
 				14B6D9DE2292BE0C00887FF2 /* GCD.h */,
 				14B6D9F22292BE0E00887FF2 /* GCD.m */,
 				14B6D9E92292BE0D00887FF2 /* GradiantView.swift */,
@@ -376,14 +375,6 @@
 			);
 			path = Cairo;
 			sourceTree = "<group>";
-		};
-		14B6D9ED2292BE0D00887FF2 /* DesignableX */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = DesignableX;
-			path = "Al-Rafik/Libs/Extensions/DesignableX";
-			sourceTree = SOURCE_ROOT;
 		};
 		14F4547F226F98A7001B1EDA /* Controllers */ = {
 			isa = PBXGroup;
