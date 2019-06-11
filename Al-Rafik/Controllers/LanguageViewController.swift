@@ -10,6 +10,7 @@ import UIKit
 
 class LanguageViewController: AbstractController {
 
+    var enablePress = true
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,20 +19,42 @@ class LanguageViewController: AbstractController {
     }
     
 
-    @IBAction func setArabic(_ sendar:UIButton){
-        AppConfig.currentLanguage = .arabic
-        VoiceManager.shared.speek("العربية")
-        goToGendarView()
+    @IBAction func setArabic(_ sender: UILongPressGestureRecognizer) {
+        if(sender.state == UIGestureRecognizer.State.ended){
+            enablePress = true
+        }else if(sender.state == UIGestureRecognizer.State.began){
+            print("began")
+            if enablePress{
+                enablePress = false
+                AppConfig.currentLanguage = .arabic
+                VoiceManager.shared.speek("العربية")
+                goToGendarView()
+                
+            }
+            
+        }
     }
+    
+    @IBAction func setEnglish(_ sender: UILongPressGestureRecognizer) {
+        if(sender.state == UIGestureRecognizer.State.ended){
+            enablePress = true
+        }else if(sender.state == UIGestureRecognizer.State.began){
+            print("began")
+            if enablePress{
+                enablePress = false
+                AppConfig.currentLanguage = .english
+                VoiceManager.shared.speek("English")
+                goToGendarView()
+                
+            }
+            
+        }
+    }
+    
 
-    @IBAction func setEnglish(_ sendar:UIButton){
-        AppConfig.currentLanguage = .english
-        VoiceManager.shared.speek("English")
-        goToGendarView()
-    }
     
     func goToGendarView(){
         let vc = UIStoryboard.mainStoryboard.instantiateViewController(withIdentifier: "GendarViewController") as! GendarViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.present(vc, animated: true, completion: nil)
     }
 }

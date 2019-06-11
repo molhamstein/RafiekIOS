@@ -28,9 +28,11 @@ class ViewController: AbstractController {
     var controlCounter = 0
     var selectedLayer:SVGLayer?
     var controlSelectedLayer:SVGLayer?
+    var closeEnablePress:Bool = true
     var enablePress:Bool = true
     var controlEnablePress:Bool = true
     var selectedPage:Page?
+    var confirmClose = false
     
     
     var appBrain = AppBrain()
@@ -50,6 +52,25 @@ class ViewController: AbstractController {
         super.viewDidLayoutSubviews()
         
     }
+    @IBAction func close(_ sender: UILongPressGestureRecognizer) {
+        if(sender.state == UIGestureRecognizer.State.ended){
+            closeEnablePress = true
+        }else if(sender.state == UIGestureRecognizer.State.began){
+            if closeEnablePress{
+                closeEnablePress = false
+                if confirmClose{
+//                self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    confirmClose = true
+                    VoiceManager.shared.appendTextList(list: [MessagesHelper.closeMessage])
+                    VoiceManager.shared.playList()
+                }
+            }
+            
+        }
+    }
+
     
     func getBook(){
         if let bookName = book?.name_en{
@@ -99,20 +120,21 @@ class ViewController: AbstractController {
     }
     
     func getPageBy(id:String) ->Page?{
+        var res:Page? = nil
         for page in book?.pages ?? []{
             if page.pid == id{
-                return page
+                res = page
+                break
             }
         }
-        return nil
+        return res
     }
     
     func navigateTo(page:Page){
         selectedPage = page
         if let descritpion = selectedPage?.description{
-            VoiceManager.shared.speek(descritpion){_ in
-                print("this is a new page")
-            }
+            VoiceManager.shared.appendTextList(list: [descritpion])
+            VoiceManager.shared.playList()
         }
         self.contolrViewWidthConstraint.setNewConstant(200.0)
         UIView.animate(withDuration: 0.1, animations: {
@@ -266,8 +288,12 @@ extension ViewController:NavigationManagerDelegate{
             if let cnt =  book?.pages?.count , index < cnt - 1{
                 if let page = book?.pages?[index + 1 ]{
                     navigateTo(page: page)
+                }else{
+                    VoiceManager.shared.removeLast()
+                    AlertsManager.errorAlert()
                 }
             }else{
+                VoiceManager.shared.removeLast()
                 AlertsManager.errorAlert()
             }
         }
@@ -276,18 +302,22 @@ extension ViewController:NavigationManagerDelegate{
     func prevPage() {
         if let index = book?.pages?.firstIndex(where: {$0.pid == selectedPage?.pid}){
             if index > 0 {
-                if let page = book?.pages?[index - 1 ]{
+                if let page = book?.pages?[index - 1]{
                     navigateTo(page: page)
                 }else{
+                    VoiceManager.shared.removeLast()
                     AlertsManager.errorAlert()
                 }
+            }else{
+                VoiceManager.shared.removeLast()
+                AlertsManager.errorAlert()
             }
         }
     }
     
     func goToPage(num: Int) {
-        if let cnt = book?.pages?.count , num < cnt{
-            if let page = book?.pages?[num]{
+        if let cnt = book?.pages?.count , num <= cnt,num > 0{
+            if let page = book?.pages?[num - 1]{
                 navigateTo(page: page)
             }
         }else{
@@ -298,14 +328,19 @@ extension ViewController:NavigationManagerDelegate{
     func playMenuActions() {
         guard let menu = selectedPage?.menu else {return}
         let actions = menu.map{$0.type ?? ""}
-        VoiceManager.shared.textList = actions
-        VoiceManager.shared.speakTextList()
+        var textList:[String] = []
+        var i = 1
+        for action in  (actions.map{Commands(rawValue: $0)}.map{$0?.description ?? ($0?.rawValue)!}) {
+            textList.append("\(i)  \(action)")
+            i += 1
+        }
+        VoiceManager.shared.appendTextList(list:textList)
     }
     
     func trigerMenuAction(num: Int) {
         guard let menu = selectedPage?.menu else {return}
-        if num < menu.count {
-            let action = menu[num]
+        if num <= menu.count , num > 0{
+            let action = menu[num - 1]
             if let type = action.type{
                 if let val = action.value{
                     self.appBrain.setValue(val)
@@ -313,6 +348,8 @@ extension ViewController:NavigationManagerDelegate{
                     
                 }
             }
+        }else{
+            AlertsManager.errorAlert()
         }
     }
 }

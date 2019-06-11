@@ -15,15 +15,26 @@ class SearchViewController: AbstractController {
     var chooseBookMode = false
     var books:[Book] = []
     
+    var numbers:[String] = []
+    
+    var enablePress = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        initialize()
+    }
     func initialize(){
-        VoiceManager.shared.speek(MessagesHelper.searchViewInfoMessage)
-        number = nil
+        VoiceManager.shared.appendTextList(list: [MessagesHelper.searchViewInfoMessage])
+        VoiceManager.shared.playList()
+        self.number = nil
+        self.numbers = []
         isTyping = false
+        chooseBookMode = false
     }
     
     
@@ -38,28 +49,39 @@ class SearchViewController: AbstractController {
                     self.chooseBookMode = true
                     self.chooseBook()
                 }else{
-                    AlertsManager.warningAlert()
+                    AlertsManager.errorAlert()
+                    VoiceManager.shared.appendTextList(list: [MessagesHelper.searchResultViewErrorMessage])
                     self.initialize()
+                    
+
                 }
             }
             
             if error != nil{
-                AlertsManager.errorAlert()
-                self.initialize()
+                    AlertsManager.errorAlert()
+                    VoiceManager.shared.appendTextList(list: [MessagesHelper.searchResultViewErrorMessage])
+                    self.initialize()
             }
         }
         
     }
     
     func chooseBook(){
-        VoiceManager.shared.speek(MessagesHelper.searchResultViewInfoMessage)
-        
-        perform(#selector(readBooksDescription), with: nil, afterDelay: 0.7)
+        VoiceManager.shared.appendTextList(list: [MessagesHelper.searchResultViewInfoMessage])
+        readBooksDescription()
+//        perform(#selector(readBooksDescription), with: nil, afterDelay: 2.8)
     }
     
     @objc func readBooksDescription(){
-        VoiceManager.shared.textList = self.books.map({$0.description ?? ""})
-        VoiceManager.shared.speakTextList()
+        var textList:[String] = []
+        var i = 1;
+        for book in books {
+            textList.append("\(i) \(book.description ?? "")")
+            i += 1
+        }
+//        let textList = self.books.map({ $0.description ?? ""})
+        VoiceManager.shared.appendTextList(list:textList)
+        VoiceManager.shared.playList()
     }
     
     func goToBookPage(){
@@ -69,20 +91,31 @@ class SearchViewController: AbstractController {
                 let vc = UIStoryboard.mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
                 vc.book = self.books[index - 1]
                 vc.bookId = self.books[index - 1].bId
-                self.navigationController?.pushViewController(vc, animated: true)
+//                self.navigationController?.pushViewController(vc, animated: true)
+                self.present(vc, animated: true, completion: nil)
+                
             }else{
                 AlertsManager.warningAlert()
+                 VoiceManager.shared.speek(MessagesHelper.searchResultViewErrorMessage)
             }
         }
         
     }
-
-    @IBAction func setNumber(_ sender: UIButton) {
-        if let title = sender.currentTitle{
-            VoiceManager.shared.speek(title)
-            if title == "Enter"{
+    @IBAction func setNumber(_ sender: UILongPressGestureRecognizer) {
+        
+        
+        if(sender.state == UIGestureRecognizer.State.ended){
+            enablePress = true
+        }else if(sender.state == UIGestureRecognizer.State.began){
+            print("began")
+            if enablePress{
+                enablePress = false
+        if let tag = sender.view?.tag  {
+             let title = String(tag)
+           
+            if tag == -1{
                 if isTyping {
-                    VoiceManager.shared.speek(number ?? "None"){_ in
+                    VoiceManager.shared.speek(numbers.joined(separator: " "))
                         if self.chooseBookMode {
                             self.goToBookPage()
                         }else{
@@ -91,18 +124,32 @@ class SearchViewController: AbstractController {
                         
                         self.isTyping = false
                         self.number = nil
-                    }
+                        self.numbers = []
+                    
+                }else{
+                    AlertsManager.errorAlert()
+                    VoiceManager.shared.speek(MessagesHelper.wrongChooseErrorMessage)
                 }
             }else{
+                VoiceManager.shared.speek(title)
                 if isTyping{
                     if number != nil{
                         number = number! + title
+                        numbers.append(title)
                     }
                 }else{
                     number = title
+                    numbers = [title]
                     isTyping = true
                 }
             }
+                }
+                
+            }
+            
         }
+        
     }
+    
+  
 }

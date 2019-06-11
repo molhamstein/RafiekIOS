@@ -11,22 +11,33 @@ import Foundation
 
 
 enum Commands:String{
-    case menu       = "menu"
-    case enter      = "enter"
-    case up         = "up"
-    case down       = "down"
-    case left       = "left"
-    case right      = "right"
-    case previous   = "previous"
-    case next       = "next"
-    case confirm    = "confirm"
+    case menu           = "menu"
+    case enter          = "enter"
+    case up             = "up"
+    case down           = "down"
+    case left           = "left"
+    case right          = "right"
+    case previous       = "previous"
+    case next           = "next"
+    case confirm        = "confirm"
+    case text           = "text"
+    case navigation     = "navigation"
+    case url            = "url"
+    case audio          = "audio"
+    case command        = "command"
     
     var description:String{
         switch self {
         case .menu:
-            return ""
+            if AppConfig.currentLanguage == .arabic{
+                return "Menu Mode  you will hear a list of commands and you have to type the number of the command and then press enter"
+            }
+            return "Menu Mode  you will hear a list of commands and you have to type the number of the command and then press enter"
         case .enter:
-            return ""
+            if AppConfig.currentLanguage == .arabic{
+                  return "Enter Mode  Type the page number on your keypad and place the correct page on your device and then press enter again to confirm the page"
+            }
+              return "Enter Mode  Type the page number on your keypad and place the correct page on your device and then press enter again to confirm the page"
         case .up:
             if AppConfig.currentLanguage == .arabic{
                 return "Going To up page"
@@ -58,7 +69,35 @@ enum Commands:String{
             }
             return "Going To next page"
         case .confirm:
-            return ""
+            if AppConfig.currentLanguage == .arabic{
+                return "Please Set The correct Page on your device and then press enter"
+            }
+            return "Please Set The correct Page on your device and then press enter"
+        case .text:
+            if AppConfig.currentLanguage == .arabic{
+                return "You will hear a text"
+            }
+            return "You will hear a text"
+        case .navigation:
+            if AppConfig.currentLanguage == .arabic{
+                return "You will be navigating to another page"
+            }
+            return "You will be navigating to another page"
+        case .audio:
+            if AppConfig.currentLanguage == .arabic{
+               return "You will hear an audio file"
+            }
+            return "You will hear an audio file"
+        case .url:
+            if AppConfig.currentLanguage == .arabic{
+                return "You will open a web url"
+            }
+            return "You will open a web url"
+        case .command:
+            if AppConfig.currentLanguage == .arabic{
+                return "Command"
+            }
+            return "Command"
         }
         
     }
@@ -127,22 +166,22 @@ class AppBrain {
                 if let val = value , let op = Commands(rawValue: val){
                     switch (op){
                     case .up , .down , .left , .right:
-                        VoiceManager.shared.speek(op.description) { _ in
-                            NavigationManager.goToDirection(dir: op.rawValue)
-                            self.number = nil
-                        }
+                        VoiceManager.shared.appendTextList(list: [ op.description])
+//                        VoiceManager.shared.playList()
+                        NavigationManager.goToDirection(dir: op.rawValue)
+                        self.number = nil
                         break;
                     case .next:
-                        VoiceManager.shared.speek(op.description) { _ in
-                            NavigationManager.next()
-                            self.number = nil
-                        }
+                        VoiceManager.shared.appendTextList(list: [ op.description])
+                        NavigationManager.next()
+                        self.number = nil
+                        
                         break;
                     case .previous:
-                        VoiceManager.shared.speek(op.description) { _ in
-                            NavigationManager.prev()
-                            self.number = nil
-                        }
+                        VoiceManager.shared.appendTextList(list: [op.description])
+                        NavigationManager.prev()
+                        self.number = nil
+                        
                         break;
                     case .enter:
                         if !enterMode{
@@ -153,27 +192,41 @@ class AppBrain {
                                 }
                                 menuMode = false
                             }else{
-                                VoiceManager.shared.speek("Please Choose the page number")
+                                VoiceManager.shared.speek(op.description)
                                 number = nil
                                 enterMode = true
                             }
                         }else{
-                            if let index = number {
-                                NavigationManager.goToPage(num: index)
-                                number = nil
+                            if !confirmMode{
+                                confirmMode = true
+                                VoiceManager.shared.speek(Commands.confirm.description)
+                            }else{
+                                if let index = number {
+                                    NavigationManager.goToPage(num: index)
+                                    number = nil
+                                }
+                                confirmMode = false
+                                enterMode = false
                             }
-                            enterMode = false
+                            
                         }
                         break
                     case .menu:
-                        VoiceManager.shared.speek("Please Choose the Action number")
+                            VoiceManager.shared.appendTextList(list: [op.description])
                             NavigationManager.playMenuActions()
-                            menuMode = true
-                            enterMode = false
-                            number = nil
+                            VoiceManager.shared.playList()
+                            self.menuMode = true
+                            self.enterMode = false
+                            self.number = nil
+                            
+                        
                         break
                     case .confirm:
                         break
+                    default:
+                        VoiceManager.shared.speek(op.description) { _ in
+                           
+                        }
                     }
                 }// End Command
                 break

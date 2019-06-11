@@ -43,12 +43,13 @@ class VoiceManager:NSObject{
     
     typealias CompletionBlock = ((Bool) -> ())
     var completionBlock: CompletionBlock?
+    var queue = Queue<String>()
     
     public var player:AVAudioPlayer?
     public var speechSynthesizer:AVSpeechSynthesizer?
     public var textList:[String]?
     var current:Int = 0
-    var playList:Bool = false
+//    var playList:Bool = false
     var finished = false
     var isSpeaking = false
     public static var shared = VoiceManager()
@@ -61,7 +62,7 @@ class VoiceManager:NSObject{
     
     func speek(_ message: String, completion: CompletionBlock? = nil){
         // Line 1. Create an instance of AVSpeechSynthesizer.
-        finished = false
+        
         speechSynthesizer?.stopSpeaking(at: .immediate)
         completionBlock?(false)
         completionBlock = completion
@@ -69,7 +70,7 @@ class VoiceManager:NSObject{
         let speechUtterance: AVSpeechUtterance = AVSpeechUtterance(string: message)
         //Line 3. Specify the speech utterance rate. 1 = speaking extremely the higher the values the slower speech patterns. The default rate, AVSpeechUtteranceDefaultSpeechRate is 0.5
         speechUtterance.rate = 0.5
-        speechUtterance.pitchMultiplier = 1.2
+        speechUtterance.pitchMultiplier = 1.0
         // Line 4. Specify the voice. It is explicitly set to English here, but it will use the device default if not specified.
         //ar-SA
         let voice = AVSpeechSynthesisVoice(language: AppConfig.currentVoice.identifire)
@@ -82,13 +83,15 @@ class VoiceManager:NSObject{
     
     }
     
-    func speakTextList(){
-        if textList != nil{
-            playList = true
-            current = 0
-            speek(textList?[current] ?? ""){ _ in}
-        }else{
-            playList = false
+    func appendTextList(list:[String]){
+        for st in list{
+            queue.enqueue(st)
+        }
+    }
+    
+    func playList(){
+        if(!queue.isEmpty){
+            speek(queue.dequeue() ?? "")
         }
     }
 
@@ -110,11 +113,16 @@ class VoiceManager:NSObject{
         }
     }
     
+    func removeLast(){
+        if(!queue.isEmpty){
+            speek(queue.dequeue() ?? "")
+        }
+    }
     
      func stop(){
         player?.stop()
         speechSynthesizer?.stopSpeaking(at: .immediate)
-        playList = false
+//        playList = false
         current = 0
         textList = nil
     }
@@ -125,19 +133,22 @@ class VoiceManager:NSObject{
 extension VoiceManager:AVSpeechSynthesizerDelegate{
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        finished = true
+        
         print("finished")
         isSpeaking = false
         completionBlock?(true)
         completionBlock = nil
-        if playList{
-            current += 1
-            if let cnt = textList?.count , current < cnt {
-                speek(textList?[current] ?? ""){_ in }
-            }else{
-                playList = false
-                textList = nil
-            }
+//        if playList{
+//            current += 1
+//            if let cnt = textList?.count , current < cnt {
+//                speek(textList?[current] ?? ""){_ in }
+//            }else{
+//                playList = false
+//                textList = nil
+//            }
+//        }
+        if(!queue.isEmpty){
+            speek(queue.dequeue() ?? "")
         }
     }
 }

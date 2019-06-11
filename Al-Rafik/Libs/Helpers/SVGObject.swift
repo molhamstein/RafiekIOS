@@ -94,9 +94,16 @@ public class SVGManager{
             layer.fillColor = fillColor
     
             let scaleFactor = getRatio(viewBox: viewBox(with: url), bounds: containerView.bounds)
-            var affineTransform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
-            let transformedPath = layer.path?.copy(using: &affineTransform)
-            layer.path = transformedPath
+            var scaleTransform = CGAffineTransform.identity
+            scaleTransform = scaleTransform.scaledBy(x: scaleFactor, y: scaleFactor)
+            //scaleTransform.translatedBy(x: -boundingBox.minX, y: -boundingBox.minY)
+            
+            let scaledSize = viewBox(with: url).applying(CGAffineTransform (scaleX: scaleFactor, y: scaleFactor))
+            let centerOffset = CGSize(width: (containerView.frame.width - scaledSize.width ) / (scaleFactor * 2.0), height: (containerView.frame.height - scaledSize.height) /  (scaleFactor * 2.0) )
+            scaleTransform = scaleTransform.translatedBy(x: centerOffset.width, y: centerOffset.height)
+            //CGPathCreateCopyByTransformingPath(path, &scaleTransform)
+            let  scaledPath = layer.path?.copy(using: &scaleTransform)
+            layer.path = scaledPath
             
             // Add it to the layer hierarchy
             layers.append(layer)
@@ -143,10 +150,17 @@ public class SVGManager{
             layer.fillColor = fillColor
             
             let scaleFactor = getRatio(viewBox: viewBox(with: content), bounds: containerView.bounds)
-            var affineTransform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
-            let transformedPath = layer.path?.copy(using: &affineTransform)
-            layer.path = transformedPath
-            
+   
+            var scaleTransform = CGAffineTransform.identity
+            scaleTransform = scaleTransform.scaledBy(x: scaleFactor, y: scaleFactor)
+            //scaleTransform.translatedBy(x: -boundingBox.minX, y: -boundingBox.minY)
+
+            let scaledSize = viewBox(with: content).applying(CGAffineTransform (scaleX: scaleFactor, y: scaleFactor))
+            let centerOffset = CGSize(width: (containerView.frame.width - scaledSize.width ) / (scaleFactor * 2.0), height: (containerView.frame.height - scaledSize.height) /  (scaleFactor * 2.0) )
+            scaleTransform = scaleTransform.translatedBy(x: centerOffset.width, y: centerOffset.height)
+            //CGPathCreateCopyByTransformingPath(path, &scaleTransform)
+            let  scaledPath = layer.path?.copy(using: &scaleTransform)
+            layer.path = scaledPath
             // Add it to the layer hierarchy
             layers.append(layer)
         }
@@ -172,6 +186,38 @@ public class SVGManager{
         }
         return scaleFactor
         
+    }
+    
+    
+    func resizepath(Fitin frame : CGRect , path : CGPath) -> CGPath{
+        
+        
+        let boundingBox = path.boundingBox
+        let boundingBoxAspectRatio = boundingBox.width / boundingBox.height
+        let viewAspectRatio = frame.width  / frame.height
+        var scaleFactor : CGFloat = 1.0
+        if (boundingBoxAspectRatio > viewAspectRatio) {
+            // Width is limiting factor
+            
+            scaleFactor = frame.width / boundingBox.width
+        } else {
+            // Height is limiting factor
+            scaleFactor = frame.height / boundingBox.height
+        }
+        
+        
+        var scaleTransform = CGAffineTransform.identity
+        scaleTransform = scaleTransform.scaledBy(x: scaleFactor, y: scaleFactor)
+        scaleTransform.translatedBy(x: -boundingBox.minX, y: -boundingBox.minY)
+        
+        let scaledSize = boundingBox.size.applying(CGAffineTransform (scaleX: scaleFactor, y: scaleFactor))
+        let centerOffset = CGSize(width: (frame.width - scaledSize.width ) / scaleFactor * 2.0, height: (frame.height - scaledSize.height) /  scaleFactor * 2.0 )
+        scaleTransform = scaleTransform.translatedBy(x: centerOffset.width, y: centerOffset.height)
+        //CGPathCreateCopyByTransformingPath(path, &scaleTransform)
+        let  scaledPath = path.copy(using: &scaleTransform)
+        
+        
+        return scaledPath!
     }
     
     

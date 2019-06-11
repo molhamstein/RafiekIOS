@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct FileHelper{
+class FileHelper{
     
     static let fileManager = FileManager.default
     
