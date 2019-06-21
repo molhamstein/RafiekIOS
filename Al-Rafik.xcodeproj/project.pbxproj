@@ -41,11 +41,11 @@
 		1438AC432257F17800ED68D4 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438AC322257F17800ED68D4 /* AppFonts.swift */; };
 		1438AC452257F49700ED68D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438AC442257F49700ED68D4 /* Constants.swift */; };
 		1438AC472257F78D00ED68D4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438AC462257F78D00ED68D4 /* Page.swift */; };
-		144EAD6022AD45FC00D4402A /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EAD5F22AD45FC00D4402A /* Queue.swift */; };
 		1493557F228F658900F12A99 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1493557E228F658900F12A99 /* LanguageViewController.swift */; };
 		14935581228F659300F12A99 /* GendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14935580228F659300F12A99 /* GendarViewController.swift */; };
 		14935583228F688400F12A99 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14935582228F688400F12A99 /* SearchViewController.swift */; };
 		149B499A2266807C000DA33B /* AppBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B49992266807C000DA33B /* AppBrain.swift */; };
+		14B2110322BC64DF0055728E /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B2110222BC64DF0055728E /* Queue.swift */; };
 		14B6D9FC2292BE0E00887FF2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9DC2292BE0C00887FF2 /* UIView.swift */; };
 		14B6D9FD2292BE0E00887FF2 /* XUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9DD2292BE0C00887FF2 /* XUILabel.swift */; };
 		14B6D9FE2292BE0E00887FF2 /* XUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D9DF2292BE0C00887FF2 /* XUIButton.swift */; };
@@ -127,11 +127,11 @@
 		1438AC322257F17800ED68D4 /* AppFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		1438AC442257F49700ED68D4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1438AC462257F78D00ED68D4 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
-		144EAD5F22AD45FC00D4402A /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		1493557E228F658900F12A99 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		14935580228F659300F12A99 /* GendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GendarViewController.swift; sourceTree = "<group>"; };
 		14935582228F688400F12A99 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		149B49992266807C000DA33B /* AppBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBrain.swift; sourceTree = "<group>"; };
+		14B2110222BC64DF0055728E /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = "Al-Rafik/Libs/Extensions/Queue.swift"; sourceTree = SOURCE_ROOT; };
 		14B6D9DC2292BE0C00887FF2 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = "Al-Rafik/Libs/Extensions/UIView.swift"; sourceTree = SOURCE_ROOT; };
 		14B6D9DD2292BE0C00887FF2 /* XUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XUILabel.swift; path = "Al-Rafik/Libs/Extensions/XUILabel.swift"; sourceTree = SOURCE_ROOT; };
 		14B6D9DE2292BE0C00887FF2 /* GCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCD.h; path = "Al-Rafik/Libs/Extensions/GCD.h"; sourceTree = SOURCE_ROOT; };
@@ -196,6 +196,7 @@
 		14216A25225F831100A121FD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				14B2110222BC64DF0055728E /* Queue.swift */,
 				14B6D9E82292BE0D00887FF2 /* CAShapeLayer.swift */,
 				14B6D9F92292BE0E00887FF2 /* Collection.swift */,
 				14B6D9DE2292BE0C00887FF2 /* GCD.h */,
@@ -227,7 +228,6 @@
 				14B6D9DF2292BE0C00887FF2 /* XUIButton.swift */,
 				14B6D9DD2292BE0C00887FF2 /* XUILabel.swift */,
 				14B6D9F52292BE0E00887FF2 /* XUITextField.swift */,
-				144EAD5F22AD45FC00D4402A /* Queue.swift */,
 			);
 			name = Extensions;
 			path = ../../../GlobaPages/GlobalPages/Classes/Libs/Extensions;
@@ -579,7 +579,7 @@
 				14B6D9FC2292BE0E00887FF2 /* UIView.swift in Sources */,
 				14B6D9FF2292BE0E00887FF2 /* UIImage.swift in Sources */,
 				14DC25D1228FFEAE004CDEAD /* MessagesHelper.swift in Sources */,
-				144EAD6022AD45FC00D4402A /* Queue.swift in Sources */,
+				14B2110322BC64DF0055728E /* Queue.swift in Sources */,
 				14B6DA022292BE0E00887FF2 /* UITabBarItem.swift in Sources */,
 				14B6DA042292BE0E00887FF2 /* UIView2.swift in Sources */,
 				14B6DA072292BE0F00887FF2 /* CAShapeLayer.swift in Sources */,
