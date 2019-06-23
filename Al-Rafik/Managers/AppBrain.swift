@@ -30,67 +30,67 @@ enum Commands:String{
         switch self {
         case .menu:
             if AppConfig.currentLanguage == .arabic{
-                return "Menu Mode  you will hear a list of commands and you have to type the number of the command and then press enter"
+                return "ستسمع مجموعه من الاوامر المرقمة, اختر احدها و اضغط موافق"
             }
-            return "Menu Mode  you will hear a list of commands and you have to type the number of the command and then press enter"
+            return "Menu Mode,  you will hear a list of commands and you have to type the number of the command and then press enter"
         case .enter:
             if AppConfig.currentLanguage == .arabic{
-                  return "Enter Mode  Type the page number on your keypad and place the correct page on your device and then press enter again to confirm the page"
+                  return "يمكنك الان ادخال رقم الصفحة و ضغط موافق ثم تثبيت الصفحة و التاكيد بضغط موافق مرة اخرى"
             }
-              return "Enter Mode  Type the page number on your keypad and place the correct page on your device and then press enter again to confirm the page"
+              return "Enter Mode, Type the page number on your keypad and place the correct page on your device and then press enter again to confirm the page"
         case .up:
             if AppConfig.currentLanguage == .arabic{
-                return "Going To up page"
+                return "التوجه للاعلى"
             }
             return "Going To up page"
         case .down:
             if AppConfig.currentLanguage == .arabic{
-                return "Going To down page"
+                return "التوجة للاسفل"
             }
             return "Going To down page"
         case .left:
             if AppConfig.currentLanguage == .arabic{
-                return "Going To left page"
+                return "التوجه الى اليسار"
             }
             return "Going To left page"
         case .right:
             if AppConfig.currentLanguage == .arabic{
-                return "Going To right page"
+                return "التوجه الى اليمين"
             }
             return "Going To right page"
         case .previous:
             if AppConfig.currentLanguage == .arabic{
-                return "Going To previose page"
+                return "الذهاب للصفحة السابقة"
             }
             return "Going To previose page"
         case .next:
             if AppConfig.currentLanguage == .arabic{
-                return "Going To next page"
+                return "التوجه للصفحة التالية"
             }
             return "Going To next page"
         case .confirm:
             if AppConfig.currentLanguage == .arabic{
-                return "Please Set The correct Page on your device and then press enter"
+                return "الرجاء تثبيت الصفحة على الجهاز و ضغط موافق"
             }
             return "Please Set The correct Page on your device and then press enter"
         case .text:
             if AppConfig.currentLanguage == .arabic{
-                return "You will hear a text"
+                return "قراءة النص"
             }
             return "You will hear a text"
         case .navigation:
             if AppConfig.currentLanguage == .arabic{
-                return "You will be navigating to another page"
+                return "للانتقال الى صفحة اخرى"
             }
             return "You will be navigating to another page"
         case .audio:
             if AppConfig.currentLanguage == .arabic{
-               return "You will hear an audio file"
+               return "لسماع تسجيل صوتي"
             }
             return "You will hear an audio file"
         case .url:
             if AppConfig.currentLanguage == .arabic{
-                return "You will open a web url"
+                return "لفتح رابط خارجي"
             }
             return "You will open a web url"
         case .command:
