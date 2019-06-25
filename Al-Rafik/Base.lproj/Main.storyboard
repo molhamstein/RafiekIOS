@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GE5-sl-UN2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GE5-sl-UN2">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -344,14 +344,31 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OeP-5h-tSc">
                                         <rect key="frame" x="0.0" y="447" width="350" height="149"/>
                                         <subviews>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlz-Wq-aSx">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="149"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE2-JO-CMh">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="149"/>
+                                                <rect key="frame" x="120" y="0.0" width="110" height="149"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="Fav-TI-1bv" appends="YES" id="wXK-G2-r0z"/>
+                                                </connections>
+                                            </label>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2J-Ru-aGh">
+                                                <rect key="frame" x="240" y="0.0" width="110" height="149"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="qZJ-ts-UBY" appends="YES" id="5Cp-wx-eNA"/>
                                                 </connections>
                                             </label>
                                         </subviews>
@@ -372,6 +389,31 @@
                                     <outletCollection property="gestureRecognizers" destination="tUb-70-YFl" appends="YES" id="ptd-o5-qeB"/>
                                 </connections>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qiD-Og-eDK">
+                                <rect key="frame" x="16" y="16" width="40" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rf4-Kc-L6j">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="YX2-Sg-3X5" appends="YES" id="BOq-I0-HTq"/>
+                                        </connections>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Hlo-RJ-U2A"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rf4-Kc-L6j" secondAttribute="bottom" id="LIM-mZ-yh2"/>
+                                    <constraint firstItem="Rf4-Kc-L6j" firstAttribute="leading" secondItem="qiD-Og-eDK" secondAttribute="leading" id="QYN-Er-3SH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rf4-Kc-L6j" secondAttribute="trailing" id="SGx-oF-2gJ"/>
+                                    <constraint firstAttribute="width" constant="40" id="qSC-L3-p5t"/>
+                                    <constraint firstItem="Rf4-Kc-L6j" firstAttribute="top" secondItem="qiD-Og-eDK" secondAttribute="top" id="wNX-kb-jBQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -380,6 +422,8 @@
                             <constraint firstItem="kdG-Cx-vbk" firstAttribute="trailing" secondItem="9p3-xR-dEX" secondAttribute="trailing" constant="32" id="6Vh-Eq-lJ8"/>
                             <constraint firstItem="9p3-xR-dEX" firstAttribute="top" secondItem="SxR-eK-3F0" secondAttribute="bottom" constant="16" id="Ojj-15-6Rw"/>
                             <constraint firstItem="kdG-Cx-vbk" firstAttribute="bottom" secondItem="9p3-xR-dEX" secondAttribute="bottom" constant="32" id="XqW-j6-D9v"/>
+                            <constraint firstItem="qiD-Og-eDK" firstAttribute="leading" secondItem="kdG-Cx-vbk" secondAttribute="leading" constant="16" id="Z9J-qG-d6o"/>
+                            <constraint firstItem="qiD-Og-eDK" firstAttribute="top" secondItem="adX-u4-uek" secondAttribute="top" constant="16" id="ZqE-kT-coD"/>
                             <constraint firstItem="9p3-xR-dEX" firstAttribute="leading" secondItem="kdG-Cx-vbk" secondAttribute="leading" constant="32" id="bGB-a1-xXI"/>
                             <constraint firstItem="kdG-Cx-vbk" firstAttribute="trailing" secondItem="SxR-eK-3F0" secondAttribute="trailing" constant="32" id="bjw-3E-tnO"/>
                             <constraint firstItem="SxR-eK-3F0" firstAttribute="leading" secondItem="kdG-Cx-vbk" secondAttribute="leading" constant="32" id="cm7-wj-Up3"/>
@@ -389,59 +433,69 @@
                     <navigationItem key="navigationItem" id="k5Z-Wl-Wet"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QOg-SJ-WrO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="MoA-fw-8Pk">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="MoA-fw-8Pk" userLabel="2">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="g3a-HD-MR5"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="1oR-78-sSB">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="1oR-78-sSB" userLabel="1">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="sxt-3N-8wX"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Imi-LN-Pb3">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Imi-LN-Pb3" userLabel="3">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="i18-on-Fwj"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="iHM-9Z-k9r">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="iHM-9Z-k9r" userLabel="6">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="AlN-w1-hJd"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="RHw-bS-IOc">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="RHw-bS-IOc" userLabel="5">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="sYA-Oi-mF2"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="DHK-le-mdW">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="DHK-le-mdW" userLabel="4">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="149-Hm-Xtq"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="eo4-y1-DnX">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="eo4-y1-DnX" userLabel="9">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="kWp-AP-nez"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="XjY-2e-0f9">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="XjY-2e-0f9" userLabel="8">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="o0x-Fi-rtz"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="YBR-l1-pxE">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="YBR-l1-pxE" userLabel="7">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="dO0-7y-uEh"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Fav-TI-1bv">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Fav-TI-1bv" userLabel="0">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="Fmr-IL-q9J"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="tUb-70-YFl">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="tUb-70-YFl" userLabel="enter">
                     <connections>
                         <action selector="setNumber:" destination="v1T-AO-9el" id="Ani-eg-RMt"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="YX2-Sg-3X5" userLabel="close">
+                    <connections>
+                        <action selector="close:" destination="v1T-AO-9el" id="Smf-Hl-Man"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="qZJ-ts-UBY" userLabel="backspace">
+                    <connections>
+                        <action selector="backSpace:" destination="v1T-AO-9el" id="PZe-d1-Dri"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>

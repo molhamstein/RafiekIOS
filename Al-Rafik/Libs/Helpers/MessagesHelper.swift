@@ -61,9 +61,24 @@ class MessagesHelper {
     
     static var closeMessage:String{
         if AppConfig.currentLanguage == .arabic{
-            return  "انت على وشك اغلاق الكتاب للتاكيد اضغط زر الاغلاق مرة ثانية"
+            return  "انت على وشك اغلاق صفحة الكتاب والعودة الى صفحة البحث للتاكيد اضغط زر الاغلاق مرة ثانية"
         }
-        return "you are about to clsoe the book to confirm press the close button again"
+        return "you are about to clsoe the book page and go back to search page to confirm press the close button again"
+    }
+    
+    
+    static var closeSearchMessage:String{
+        if AppConfig.currentLanguage == .arabic{
+            return  "انت على وشك اغلاق صفحة البحث والعودة الى صفحة اللغة"
+        }
+        return "you are about to clsoe the search page to confirm press the close button again"
+    }
+    
+    static var backSpaceMessage:String{
+        if AppConfig.currentLanguage == .arabic{
+            return  "مسح"
+        }
+        return "backspace"
         
     }
     

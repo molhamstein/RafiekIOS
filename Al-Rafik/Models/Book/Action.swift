@@ -26,9 +26,9 @@ public class Action:BaseModel{
     public var value:String?{
         switch type {
         case "text":
-            return text_en
+            return text
         case "audio":
-            return mediaId_en
+            return mediaId
         case "navigation":
             return pageId
         case "url":
@@ -41,6 +41,20 @@ public class Action:BaseModel{
         return nil
     }
     
+    
+    var text:String?{
+        if AppConfig.currentLanguage == .arabic{
+            return text_ar
+        }
+        return text_en
+    }
+    
+    var mediaId:String?{
+        if AppConfig.currentLanguage == .arabic{
+            return mediaId_ar
+        }
+        return mediaId_en
+    }
     
     override init() {
         super.init()

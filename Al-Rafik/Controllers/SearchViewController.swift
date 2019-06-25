@@ -18,6 +18,9 @@ class SearchViewController: AbstractController {
     var numbers:[String] = []
     
     var enablePress = true
+    var confirmClose = false
+    var closeEnablePress:Bool = true
+    var backspaceEnablePress:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,23 @@ class SearchViewController: AbstractController {
     }
     
     
+    @IBAction func backSpace(_ sender: UILongPressGestureRecognizer) {
+        if(sender.state == UIGestureRecognizer.State.ended){
+            backspaceEnablePress = true
+        }else if(sender.state == UIGestureRecognizer.State.began){
+            print("began")
+            if backspaceEnablePress{
+                backspaceEnablePress = false
+                VoiceManager.shared.appendTextList(list:[MessagesHelper.backSpaceMessage])
+                VoiceManager.shared.playList()
+                number?.removeLast()
+                numbers.removeLast()
+            }
+        }
+    }
+    
+    
+    
     func getBooks(){
         guard let code = number else {return}
         AlertsManager.loadingAlert(state: true)
@@ -52,8 +72,6 @@ class SearchViewController: AbstractController {
                     AlertsManager.errorAlert()
                     VoiceManager.shared.appendTextList(list: [MessagesHelper.searchResultViewErrorMessage])
                     self.initialize()
-                    
-
                 }
             }
             
@@ -102,7 +120,7 @@ class SearchViewController: AbstractController {
         
     }
     @IBAction func setNumber(_ sender: UILongPressGestureRecognizer) {
-        
+        confirmClose = false
         
         if(sender.state == UIGestureRecognizer.State.ended){
             enablePress = true
@@ -149,6 +167,26 @@ class SearchViewController: AbstractController {
             
         }
         
+    }
+    
+    
+    @IBAction func close(_ sender: UILongPressGestureRecognizer) {
+        if(sender.state == UIGestureRecognizer.State.ended){
+            closeEnablePress = true
+        }else if(sender.state == UIGestureRecognizer.State.began){
+            if closeEnablePress{
+                closeEnablePress = false
+                if confirmClose{
+                    //                self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    confirmClose = true
+                    VoiceManager.shared.appendTextList(list: [MessagesHelper.closeMessage])
+                    VoiceManager.shared.playList()
+                }
+            }
+            
+        }
     }
     
   

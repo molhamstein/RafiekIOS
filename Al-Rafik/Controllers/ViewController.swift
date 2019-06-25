@@ -225,7 +225,7 @@ class ViewController: AbstractController {
                                 appBrain.performOperation(type)
                             }
                         }
-                        self.view.backgroundColor = UIColor(cgColor:layer.fillColor!)
+//                        self.view.backgroundColor = UIColor(cgColor:layer.fillColor!)
                     }
                 }
                 
@@ -264,6 +264,9 @@ class ViewController: AbstractController {
         
         
     }
+    
+    
+    
 }
 
 
