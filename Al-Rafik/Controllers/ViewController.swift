@@ -76,8 +76,8 @@ class ViewController: AbstractController {
         if let bookName = book?.name_en{
             let path = FileHelper.document(filePath: bookName)
             if FileHelper.isExists(filePath: path){
-                readBook(file: bookName)
-                //downloadBook(bookId: bookId ?? "")
+                //readBook(file: bookName)
+                downloadBook(bookId: bookId ?? "")
             }else{
                 downloadBook(bookId: bookId ?? "")
             }
@@ -198,11 +198,37 @@ class ViewController: AbstractController {
             }
         }
         self.contentView.layer.sublayers = svgLayers
-
+    }
     
-        
-        
-        
+    func getNextPage()-> Page?{
+        if let index = book?.pages?.firstIndex(where: {$0.pid == selectedPage?.pid}){
+            if let cnt =  book?.pages?.count , index < cnt - 1{
+                if let page = book?.pages?[index + 1 ]{
+                    return page
+                }
+            }
+        }
+        return nil
+    }
+    
+    func getPrevPage()->Page?{
+        if let index = book?.pages?.firstIndex(where: {$0.pid == selectedPage?.pid}){
+            if index > 0 {
+                if let page = book?.pages?[index - 1]{
+                    return page
+                }
+            }
+        }
+        return nil
+    }
+    
+    func getPageByDirction(dirction:String)->Page?{
+        if let id = selectedPage?.direction?[dirction].string{
+            if let page = getPageBy(id: id){
+                return page
+            }
+        }
+        return nil
     }
     
     @IBAction func lognPress(_ sender: UILongPressGestureRecognizer) {
@@ -279,42 +305,26 @@ extension ViewController:NavigationManagerDelegate{
     }
     
     func goTo(dirction: String) {
-        if let id = selectedPage?.direction?[dirction].string{
-            if let page = getPageBy(id: id){
-                navigateTo(page: page)
-            }
+        if let page = getPageByDirction(dirction: dirction){
+            navigateTo(page: page)
         }
     }
     
     func nextPage() {
-        if let index = book?.pages?.firstIndex(where: {$0.pid == selectedPage?.pid}){
-            if let cnt =  book?.pages?.count , index < cnt - 1{
-                if let page = book?.pages?[index + 1 ]{
-                    navigateTo(page: page)
-                }else{
-                    VoiceManager.shared.removeLast()
-                    AlertsManager.errorAlert()
-                }
-            }else{
-                VoiceManager.shared.removeLast()
-                AlertsManager.errorAlert()
-            }
+        if let page = getNextPage(){
+            navigateTo(page: page)
+        }else{
+            VoiceManager.shared.removeLast()
+            AlertsManager.errorAlert()
         }
     }
     
     func prevPage() {
-        if let index = book?.pages?.firstIndex(where: {$0.pid == selectedPage?.pid}){
-            if index > 0 {
-                if let page = book?.pages?[index - 1]{
-                    navigateTo(page: page)
-                }else{
-                    VoiceManager.shared.removeLast()
-                    AlertsManager.errorAlert()
-                }
-            }else{
-                VoiceManager.shared.removeLast()
-                AlertsManager.errorAlert()
-            }
+        if let page = getPrevPage(){
+            navigateTo(page: page)
+        }else{
+            VoiceManager.shared.removeLast()
+            AlertsManager.errorAlert()
         }
     }
     
@@ -330,13 +340,74 @@ extension ViewController:NavigationManagerDelegate{
     
     func playMenuActions() {
         guard let menu = selectedPage?.menu else {return}
-        let actions = menu.map{$0.type ?? ""}
+//        let actions = menu.map{$0.type ?? ""}
         var textList:[String] = []
         var i = 1
-        for action in  (actions.map{Commands(rawValue: $0)}.map{$0?.description ?? ($0?.rawValue)!}) {
-            textList.append("\(i)  \(action)")
+        for action in menu{
+            if let val = action.type , let op = Commands(rawValue: val){
+                switch op{
+                case .audio:
+                    let text = Commands(rawValue: action.type ?? "")
+                    textList.append("\(i)  \(text?.description ?? "")")
+                    break
+                case .text:
+                    let text = Commands(rawValue: action.type ?? "")
+                    textList.append("\(i)  \(text?.description ?? "")")
+                    break
+                case .command:
+                    let text = Commands(rawValue: action.type ?? "")
+                    textList.append("\(i)  \(text?.description ?? "")")
+                    break
+                case .navigation:
+                    if let id = action.value{
+                        if let page = getPageBy(id: id){
+                            if let text = Commands(rawValue: action.type ?? ""){
+                                textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                            }
+                        }
+                    }
+                    break
+                case .down:
+                    if let text = Commands(rawValue: action.type ?? ""){
+                        if let page = getPageByDirction(dirction:text.rawValue){
+                             textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                        }
+                    }
+                case .up:
+                    if let text = Commands(rawValue: action.type ?? ""){
+                        if let page = getPageByDirction(dirction:text.rawValue){
+                            textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                        }
+                    }
+                case .next:
+                    if let text = Commands(rawValue: action.type ?? ""){
+                        if let page = getNextPage(){
+                            textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                        }
+                    }
+                case .left:
+                    if let text = Commands(rawValue: action.type ?? ""){
+                        if let page = getPageByDirction(dirction:text.rawValue){
+                            textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                        }
+                    }
+                case .previous:
+                    if let text = Commands(rawValue: action.type ?? ""){
+                        if let page = getPrevPage(){
+                            textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                        }
+                    }
+                default :
+                    break
+                }
+            }
             i += 1
         }
+//        for action in  (actions.map{Commands(rawValue: $0)}.map{$0?.description ?? ($0?.rawValue)!}) {
+//
+//            textList.append("\(i)  \(action)")
+//            i += 1
+//        }
         VoiceManager.shared.appendTextList(list:textList)
     }
     
