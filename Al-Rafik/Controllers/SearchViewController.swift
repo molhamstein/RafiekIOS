@@ -24,7 +24,7 @@ class SearchViewController: AbstractController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialize()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

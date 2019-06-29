@@ -90,7 +90,7 @@ class VoiceManager:NSObject{
     }
     
     func playList(){
-        if(!queue.isEmpty){
+        if(!queue.isEmpty && !isSpeaking){
             speek(queue.dequeue() ?? "")
         }
     }
@@ -125,6 +125,7 @@ class VoiceManager:NSObject{
 //        playList = false
         current = 0
         textList = nil
+        isSpeaking = false
     }
   
 }
@@ -135,7 +136,7 @@ extension VoiceManager:AVSpeechSynthesizerDelegate{
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         
         print("finished")
-        isSpeaking = false
+        
         completionBlock?(true)
         completionBlock = nil
 //        if playList{
@@ -149,6 +150,8 @@ extension VoiceManager:AVSpeechSynthesizerDelegate{
 //        }
         if(!queue.isEmpty){
             speek(queue.dequeue() ?? "")
+        }else{
+            isSpeaking = false
         }
     }
 }

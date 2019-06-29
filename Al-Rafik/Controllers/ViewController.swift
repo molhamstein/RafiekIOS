@@ -76,8 +76,8 @@ class ViewController: AbstractController {
         if let bookName = book?.name_en{
             let path = FileHelper.document(filePath: bookName)
             if FileHelper.isExists(filePath: path){
-                //readBook(file: bookName)
-                downloadBook(bookId: bookId ?? "")
+                readBook(file: bookName)
+//                downloadBook(bookId: bookId ?? "")
             }else{
                 downloadBook(bookId: bookId ?? "")
             }
@@ -113,9 +113,9 @@ class ViewController: AbstractController {
         if let bookJson = FileHelper.readBookJSON(folder: file, file: "book.json"){
         self.book = Book(json:bookJson)
             if let page = book?.pages?.first{
+                VoiceManager.shared.speek(Commands.setPage.description(val: page.name ?? ""))
                 self.navigateTo(page: page)
             }
-        
         }
     }
     
@@ -133,7 +133,7 @@ class ViewController: AbstractController {
     func navigateTo(page:Page){
         selectedPage = page
         if let descritpion = selectedPage?.description{
-            VoiceManager.shared.appendTextList(list: [descritpion])
+            VoiceManager.shared.appendTextList(list: [ descritpion])
             VoiceManager.shared.playList()
         }
         self.contolrViewWidthConstraint.setNewConstant(200.0)
@@ -247,8 +247,9 @@ class ViewController: AbstractController {
                         selectedLayer = layer
                         if let action = selectedLayer?.currentAction(){
                             if let type = action.type{
-                                appBrain.setValue(action.value ?? "")
-                                appBrain.performOperation(type)
+//                                appBrain.setValue(action.value ?? "")
+//                                appBrain.performOperation(type)
+                                performAction(action:action)
                             }
                         }
 //                        self.view.backgroundColor = UIColor(cgColor:layer.fillColor!)
@@ -275,19 +276,85 @@ class ViewController: AbstractController {
                     if let path = layer.path , path.contains(point) {
                         controlSelectedLayer = layer
                         if let action = controlSelectedLayer?.currentAction(){
-                            if let type = action.type{
-                                appBrain.setValue(action.value ?? "")
-                                appBrain.performOperation(type)
-                            }
+                           
+                            
+                            performAction(action: action)
                         }
                         self.view.backgroundColor = UIColor(cgColor:layer.fillColor!)
-                        
                     }
                 }
-                
             }
         }
         
+        
+    }
+    
+    func performAction(action:Action){
+        if let type = action.type{
+            
+        if let operation = AppBrain.operations[type]{
+            switch operation {
+            case .navigate(_):
+                VoiceManager.shared.appendTextList(list: [""])
+                if let page = getPageBy(id: action.value ?? ""){
+                    VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
+                    VoiceManager.shared.playList()
+                    appBrain.setPage(page)
+                }
+                break
+            
+            case .command:
+                // Comand
+
+                if let val = action.value , let op = Commands(rawValue: val){
+                    switch (op){
+                    case .up , .down , .left , .right:
+//                        VoiceManager.shared.appendTextList(list: [ op.description()])
+//                        //                        VoiceManager.shared.playList()
+//                        NavigationManager.goToDirection(dir: op.rawValue)
+//                        self.number = nil
+                        if let page = getPageByDirction(dirction: op.rawValue){
+                            VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
+                            VoiceManager.shared.playList()
+                            appBrain.setPage(page)
+                        }
+                        break;
+                    case .next:
+                        VoiceManager.shared.appendTextList(list: [ op.description()])
+                        if let page = getNextPage(){
+                            VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
+                            VoiceManager.shared.playList()
+                            appBrain.setPage(page)
+                        }
+//                        self.number = nil
+                        
+                        break;
+                    case .previous:
+                        VoiceManager.shared.appendTextList(list: [ op.description()])
+                        if let page = getPrevPage(){
+                            VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
+                            VoiceManager.shared.playList()
+                            appBrain.setPage(page)
+                        }
+//                        self.number = nil
+                        
+                        break;
+
+                    default:
+                        
+                        break
+
+                        
+                    }
+                }// End Command
+                break
+            default:
+                break
+            }
+            }
+            appBrain.setValue(action.value ?? "")
+            appBrain.performOperation(type)
+        }
         
     }
     
@@ -300,18 +367,24 @@ class ViewController: AbstractController {
 extension ViewController:NavigationManagerDelegate{
     func changePage(id: String) {
         if let page = getPageBy(id: id){
+           
             navigateTo(page: page)
         }
     }
     
     func goTo(dirction: String) {
         if let page = getPageByDirction(dirction: dirction){
+//            VoiceManager.shared.appendTextList(list: [Commands(rawValue:dirction)?.description(val:"\(page.description ?? "")") ?? ""])
+//            VoiceManager.shared.playList()
             navigateTo(page: page)
         }
     }
     
     func nextPage() {
+        
         if let page = getNextPage(){
+//            VoiceManager.shared.appendTextList(list: [Commands.next.description(val:"\(page.description ?? "")")])
+//            VoiceManager.shared.playList()
             navigateTo(page: page)
         }else{
             VoiceManager.shared.removeLast()
@@ -321,6 +394,8 @@ extension ViewController:NavigationManagerDelegate{
     
     func prevPage() {
         if let page = getPrevPage(){
+//            VoiceManager.shared.appendTextList(list: [Commands.next.description(val:"\(page.description ?? "")")])
+//            VoiceManager.shared.playList()
             navigateTo(page: page)
         }else{
             VoiceManager.shared.removeLast()
@@ -329,6 +404,8 @@ extension ViewController:NavigationManagerDelegate{
     }
     
     func goToPage(num: Int) {
+//        VoiceManager.shared.appendTextList(list: [Commands.confirm.description(val:"\(num)")])
+//        VoiceManager.shared.playList()
         if let cnt = book?.pages?.count , num <= cnt,num > 0{
             if let page = book?.pages?[num - 1]{
                 navigateTo(page: page)
@@ -348,53 +425,51 @@ extension ViewController:NavigationManagerDelegate{
                 switch op{
                 case .audio:
                     let text = Commands(rawValue: action.type ?? "")
-                    textList.append("\(i)  \(text?.description ?? "")")
+                    textList.append("\(i)  \(text?.description() ?? "")")
                     break
                 case .text:
                     let text = Commands(rawValue: action.type ?? "")
-                    textList.append("\(i)  \(text?.description ?? "")")
+                    textList.append("\(i)  \(text?.description() ?? "")")
                     break
                 case .command:
                     let text = Commands(rawValue: action.type ?? "")
-                    textList.append("\(i)  \(text?.description ?? "")")
+                    textList.append("\(i)  \(text?.description() ?? "")")
                     break
                 case .navigation:
                     if let id = action.value{
                         if let page = getPageBy(id: id){
-                            if let text = Commands(rawValue: action.type ?? ""){
-                                textList.append("\(i)  \(text.description) \(page.name ?? "")")
-                            }
+                            textList.append("\(i)  \(Commands.navigateMenu.description(val: page.name ?? "") )")
                         }
                     }
                     break
                 case .down:
                     if let text = Commands(rawValue: action.type ?? ""){
                         if let page = getPageByDirction(dirction:text.rawValue){
-                             textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                            textList.append("\(i)  \(text.description() ) \(page.name ?? "")")
                         }
                     }
                 case .up:
                     if let text = Commands(rawValue: action.type ?? ""){
                         if let page = getPageByDirction(dirction:text.rawValue){
-                            textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                            textList.append("\(i)  \(text.description() ) \(page.name ?? "")")
                         }
                     }
                 case .next:
                     if let text = Commands(rawValue: action.type ?? ""){
                         if let page = getNextPage(){
-                            textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                            textList.append("\(i)  \(text.description() ) \(page.name ?? "")")
                         }
                     }
                 case .left:
                     if let text = Commands(rawValue: action.type ?? ""){
                         if let page = getPageByDirction(dirction:text.rawValue){
-                            textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                            textList.append("\(i)  \(text.description() ) \(page.name ?? "")")
                         }
                     }
                 case .previous:
                     if let text = Commands(rawValue: action.type ?? ""){
                         if let page = getPrevPage(){
-                            textList.append("\(i)  \(text.description) \(page.name ?? "")")
+                            textList.append("\(i)  \(text.description() ) \(page.name ?? "")")
                         }
                     }
                 default :
