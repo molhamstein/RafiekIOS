@@ -24,11 +24,12 @@ class SearchViewController: AbstractController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        SpeechCommandsManager.shared.delegate = self
         initialize()
     }
     func initialize(){
@@ -38,6 +39,15 @@ class SearchViewController: AbstractController {
         self.numbers = []
         isTyping = false
         chooseBookMode = false
+    }
+    
+    @IBAction func listen(_ sender: UILongPressGestureRecognizer) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(startListen), object: nil)
+        self.perform(#selector(startListen), with: nil, afterDelay: 0.5)
+    }
+    
+    @objc func startListen(){
+        SpeechCommandsManager.shared.open()
     }
     
     
@@ -56,8 +66,6 @@ class SearchViewController: AbstractController {
         }
     }
     
-    
-    
     func getBooks(){
         guard let code = number else {return}
         AlertsManager.loadingAlert(state: true)
@@ -74,20 +82,17 @@ class SearchViewController: AbstractController {
                     self.initialize()
                 }
             }
-            
             if error != nil{
                     AlertsManager.errorAlert()
                     VoiceManager.shared.appendTextList(list: [MessagesHelper.searchResultViewErrorMessage])
                     self.initialize()
             }
         }
-        
     }
     
     func chooseBook(){
         VoiceManager.shared.appendTextList(list: [MessagesHelper.searchResultViewInfoMessage])
         readBooksDescription()
-//        perform(#selector(readBooksDescription), with: nil, afterDelay: 2.8)
     }
     
     @objc func readBooksDescription(){
@@ -97,78 +102,66 @@ class SearchViewController: AbstractController {
             textList.append("\(i) \(book.description ?? "")")
             i += 1
         }
-//        let textList = self.books.map({ $0.description ?? ""})
         VoiceManager.shared.appendTextList(list:textList)
         VoiceManager.shared.playList()
     }
     
     func goToBookPage(){
         if let num = number , let index = Int(num){
-            
             if (index - 1) < books.count {
                 let vc = UIStoryboard.mainStoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
                 vc.book = self.books[index - 1]
                 vc.bookId = self.books[index - 1].bId
-//                self.navigationController?.pushViewController(vc, animated: true)
                 self.present(vc, animated: true, completion: nil)
-                
             }else{
                 AlertsManager.warningAlert()
                  VoiceManager.shared.speek(MessagesHelper.searchResultViewErrorMessage)
             }
         }
-        
     }
+    
     @IBAction func setNumber(_ sender: UILongPressGestureRecognizer) {
         confirmClose = false
-        
         if(sender.state == UIGestureRecognizer.State.ended){
             enablePress = true
         }else if(sender.state == UIGestureRecognizer.State.began){
             print("began")
-            if enablePress{
-                enablePress = false
-        if let tag = sender.view?.tag  {
-             let title = String(tag)
-           
-            if tag == -1{
-                if isTyping {
-                    VoiceManager.shared.speek(numbers.joined(separator: " "))
-                        if self.chooseBookMode {
-                            self.goToBookPage()
+        if enablePress {
+            enablePress = false
+            if let tag = sender.view?.tag  {
+                let title = String(tag)
+                    if tag == -1 {
+                            if isTyping {
+                                VoiceManager.shared.speek(numbers.joined(separator: " "))
+                                    if self.chooseBookMode {
+                                        self.goToBookPage()
+                                    }else{
+                                        self.getBooks()
+                                    }
+                                    self.isTyping = false
+                                    self.number = nil
+                                    self.numbers = []
+                            }else{
+                                AlertsManager.errorAlert()
+                                VoiceManager.shared.speek(MessagesHelper.wrongChooseErrorMessage)
+                            }
+                    }else{
+                        VoiceManager.shared.speek(title)
+                        if isTyping{
+                            if number != nil{
+                                number = number! + title
+                                numbers.append(title)
+                            }
                         }else{
-                            self.getBooks()
+                            number = title
+                            numbers = [title]
+                            isTyping = true
                         }
-                        
-                        self.isTyping = false
-                        self.number = nil
-                        self.numbers = []
-                    
-                }else{
-                    AlertsManager.errorAlert()
-                    VoiceManager.shared.speek(MessagesHelper.wrongChooseErrorMessage)
-                }
-            }else{
-                VoiceManager.shared.speek(title)
-                if isTyping{
-                    if number != nil{
-                        number = number! + title
-                        numbers.append(title)
                     }
-                }else{
-                    number = title
-                    numbers = [title]
-                    isTyping = true
                 }
-            }
-                }
-                
-            }
-            
+           }
         }
-        
     }
-    
     
     @IBAction func close(_ sender: UILongPressGestureRecognizer) {
         if(sender.state == UIGestureRecognizer.State.ended){
@@ -177,7 +170,6 @@ class SearchViewController: AbstractController {
             if closeEnablePress{
                 closeEnablePress = false
                 if confirmClose{
-                    //                self.navigationController?.popViewController(animated: true)
                     self.dismiss(animated: true, completion: nil)
                 }else{
                     confirmClose = true
@@ -188,6 +180,25 @@ class SearchViewController: AbstractController {
             
         }
     }
-    
-  
+}
+
+// voice commands
+extension SearchViewController : SpeechCommandDelegate {
+    func commandDidFetched(command: VoiceCommand) {
+        print("commmadd")
+        switch command.commandType {
+        case .bookSearch:
+            if let value = command.value {
+                number  = value
+                getBooks()
+            }
+        case .chooseBook:
+            if let value = command.value {
+                number  = value
+                goToBookPage()
+            }
+        default:
+            VoiceManager.shared.speek("Invalid Voice Command")
+        }
+    }
 }

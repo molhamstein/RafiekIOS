@@ -64,10 +64,37 @@
                                     <outletCollection property="gestureRecognizers" destination="a3w-0F-Brs" appends="YES" id="s1P-fp-7Bi"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-54-aFi">
+                                <rect key="frame" x="64" y="28" width="40" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFf-vx-eRL">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="8x3-va-Dmb"/>
+                                    <constraint firstItem="tFf-vx-eRL" firstAttribute="leading" secondItem="Nal-54-aFi" secondAttribute="leading" id="TzR-rl-rJi"/>
+                                    <constraint firstAttribute="bottom" secondItem="tFf-vx-eRL" secondAttribute="bottom" id="fy3-ky-ewh"/>
+                                    <constraint firstAttribute="trailing" secondItem="tFf-vx-eRL" secondAttribute="trailing" id="guI-sc-hMD"/>
+                                    <constraint firstItem="tFf-vx-eRL" firstAttribute="top" secondItem="Nal-54-aFi" secondAttribute="top" id="mhH-MD-2w8"/>
+                                    <constraint firstAttribute="height" constant="40" id="nVz-KR-cuy"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="Kz0-Nm-GRo"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Cdy-Nv-P0q" appends="YES" id="wV0-dv-fQn"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="g9r-2j-EG4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="2MI-Qn-1Qx"/>
+                            <constraint firstItem="Nal-54-aFi" firstAttribute="centerY" secondItem="g9r-2j-EG4" secondAttribute="centerY" id="3Tn-Y1-XFh"/>
                             <constraint firstItem="g9r-2j-EG4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="3kI-Uh-9Im"/>
                             <constraint firstItem="gDp-H6-SNe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="6KQ-Mb-EoS"/>
                             <constraint firstItem="wGT-UK-cze" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CfF-vC-2G6"/>
@@ -75,6 +102,7 @@
                             <constraint firstItem="wGT-UK-cze" firstAttribute="leading" secondItem="gDp-H6-SNe" secondAttribute="trailing" id="aW2-03-WoF"/>
                             <constraint firstItem="wGT-UK-cze" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ffy-eC-fXz"/>
                             <constraint firstItem="gDp-H6-SNe" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lkw-VP-rQy"/>
+                            <constraint firstItem="Nal-54-aFi" firstAttribute="leading" secondItem="g9r-2j-EG4" secondAttribute="trailing" constant="16" id="sQ5-MU-8Tn"/>
                             <constraint firstItem="gDp-H6-SNe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yIv-E1-1R8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -100,6 +128,11 @@
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="a3w-0F-Brs" userLabel="close">
                     <connections>
                         <action selector="close:" destination="BYZ-38-t0r" id="nuv-dL-8zf"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Cdy-Nv-P0q">
+                    <connections>
+                        <action selector="listen:" destination="BYZ-38-t0r" id="dcy-fR-GD3"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
@@ -344,12 +377,15 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OeP-5h-tSc">
                                         <rect key="frame" x="0.0" y="447" width="350" height="149"/>
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlz-Wq-aSx">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb0-em-LbJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="110" height="149"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="94b-k2-Sen" appends="YES" id="Ype-9x-USG"/>
+                                                </connections>
                                             </label>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE2-JO-CMh">
                                                 <rect key="frame" x="120" y="0.0" width="110" height="149"/>
@@ -496,6 +532,11 @@
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="qZJ-ts-UBY" userLabel="backspace">
                     <connections>
                         <action selector="backSpace:" destination="v1T-AO-9el" id="PZe-d1-Dri"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="94b-k2-Sen" userLabel="Voice">
+                    <connections>
+                        <action selector="listen:" destination="v1T-AO-9el" id="adZ-zU-ryU"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>

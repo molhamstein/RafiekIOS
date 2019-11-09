@@ -14,10 +14,11 @@ class GendarViewController: AbstractController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         VoiceManager.shared.speek(MessagesHelper.gendarViewInfoMessage)
     }
+    
+
     
     @IBAction func setMale(_ sender: UILongPressGestureRecognizer) {
         if(sender.state == UIGestureRecognizer.State.ended){
@@ -29,9 +30,7 @@ class GendarViewController: AbstractController {
                 AppConfig.currentGendar = .male
                 VoiceManager.shared.speek("Male")
                 goToSearchView()
-                
             }
-            
         }
     }
     

@@ -19,6 +19,7 @@ class LanguageViewController: AbstractController {
     }
     
 
+    
     @IBAction func setArabic(_ sender: UILongPressGestureRecognizer) {
         if(sender.state == UIGestureRecognizer.State.ended){
             enablePress = true

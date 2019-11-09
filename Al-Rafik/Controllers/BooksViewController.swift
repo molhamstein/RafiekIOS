@@ -18,9 +18,6 @@ class BooksViewController: AbstractController,UITableViewDelegate,UITableViewDat
         getBooks()
         tableView.delegate = self
         tableView.dataSource = self
-//        let url = FileHelper.filePathMainBundel(file: "test", ext: "mp3")
-//        VoiceManager.play(audioURL: url!)
-      
     }
     
     func getBooks(){

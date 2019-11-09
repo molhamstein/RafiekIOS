@@ -15,7 +15,7 @@ import PocketSVG
 
 
 class ViewController: AbstractController {
-
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var contolrViewWidthConstraint:NSLayoutConstraint!
@@ -33,25 +33,18 @@ class ViewController: AbstractController {
     var controlEnablePress:Bool = true
     var selectedPage:Page?
     var confirmClose = false
-    
-    
-    var appBrain = AppBrain()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showNavBackButton = true
         NavigationManager.delegate = self
+        SpeechCommandsManager.shared.delegate = self
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getBook()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
+
     @IBAction func close(_ sender: UILongPressGestureRecognizer) {
         if(sender.state == UIGestureRecognizer.State.ended){
             closeEnablePress = true
@@ -59,7 +52,6 @@ class ViewController: AbstractController {
             if closeEnablePress{
                 closeEnablePress = false
                 if confirmClose{
-//                self.navigationController?.popViewController(animated: true)
                     self.dismiss(animated: true, completion: nil)
                 }else{
                     confirmClose = true
@@ -70,19 +62,18 @@ class ViewController: AbstractController {
             
         }
     }
-
     
     func getBook(){
         if let bookName = book?.name_en{
             let path = FileHelper.document(filePath: bookName)
             if FileHelper.isExists(filePath: path){
                 readBook(file: bookName)
-//                downloadBook(bookId: bookId ?? "")
+                //                downloadBook(bookId: bookId ?? "")
             }else{
                 downloadBook(bookId: bookId ?? "")
             }
         }else{
-          downloadBook(bookId: bookId ?? "")
+            downloadBook(bookId: bookId ?? "")
         }
     }
     
@@ -105,13 +96,10 @@ class ViewController: AbstractController {
         }
     }
     
-    
-    
-    
     func readBook(file:String){
-        appBrain.setBook(file)
+        AppBrain.shared.setBook(file)
         if let bookJson = FileHelper.readBookJSON(folder: file, file: "book.json"){
-        self.book = Book(json:bookJson)
+            self.book = Book(json:bookJson)
             if let page = book?.pages?.first{
                 VoiceManager.shared.speek(Commands.setPage.description(val: page.name ?? ""))
                 self.navigateTo(page: page)
@@ -152,7 +140,7 @@ class ViewController: AbstractController {
                 UIView.animate(withDuration: 0.1, animations: {
                     self.view.layoutSubviews()
                 }, completion: nil)
-
+                
                 let layers = SVGManager.shared.drawSVG(of: content, containerView: self.controlView)
                 var svgLayers:[SVGLayer] = []
                 for layer in layers{
@@ -161,7 +149,6 @@ class ViewController: AbstractController {
                         svgLayers.append(layer)
                     }
                 }
-                
                 self.controlView.layer.sublayers = svgLayers
             }
         }else if let control = self.book?.control{
@@ -182,11 +169,10 @@ class ViewController: AbstractController {
                         svgLayers.append(layer)
                     }
                 }
-               
                 self.controlView.layer.sublayers = svgLayers
             }
         }
-        
+
         // content view
         let content = page.content
         let layers = SVGManager.shared.drawSVG(of: content!, containerView: self.contentView)
@@ -232,7 +218,6 @@ class ViewController: AbstractController {
     }
     
     @IBAction func lognPress(_ sender: UILongPressGestureRecognizer) {
-        
         if(sender.state == UIGestureRecognizer.State.ended){
             enablePress = true
         }else if(sender.state == UIGestureRecognizer.State.began){
@@ -243,25 +228,15 @@ class ViewController: AbstractController {
                 guard let sublayers = contentView.layer.sublayers as? [SVGLayer] else {return}
                 for layer in sublayers {
                     if let path = layer.path , path.contains(point) {
-                       
                         selectedLayer = layer
                         if let action = selectedLayer?.currentAction(){
-                            if let type = action.type{
-//                                appBrain.setValue(action.value ?? "")
-//                                appBrain.performOperation(type)
-                                performAction(action:action)
-                            }
+                            performAction(action:action)
                         }
-//                        self.view.backgroundColor = UIColor(cgColor:layer.fillColor!)
                     }
                 }
-                
             }
         }
-    
-       
     }
-    
     
     @IBAction func controlLognPress(_ sender: UILongPressGestureRecognizer) {
         if(sender.state == UIGestureRecognizer.State.ended){
@@ -276,8 +251,6 @@ class ViewController: AbstractController {
                     if let path = layer.path , path.contains(point) {
                         controlSelectedLayer = layer
                         if let action = controlSelectedLayer?.currentAction(){
-                           
-                            
                             performAction(action: action)
                         }
                         self.view.backgroundColor = UIColor(cgColor:layer.fillColor!)
@@ -285,106 +258,80 @@ class ViewController: AbstractController {
                 }
             }
         }
-        
-        
     }
     
-    func performAction(action:Action){
-        if let type = action.type{
-            
-        if let operation = AppBrain.operations[type]{
-            switch operation {
-            case .navigate(_):
-                VoiceManager.shared.appendTextList(list: [""])
-                if let page = getPageBy(id: action.value ?? ""){
-                    VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
-                    VoiceManager.shared.playList()
-                    appBrain.setPage(page)
-                }
-                break
-            
-            case .command:
-                // Comand
-
-                if let val = action.value , let op = Commands(rawValue: val){
-                    switch (op){
-                    case .up , .down , .left , .right:
-//                        VoiceManager.shared.appendTextList(list: [ op.description()])
-//                        //                        VoiceManager.shared.playList()
-//                        NavigationManager.goToDirection(dir: op.rawValue)
-//                        self.number = nil
-                        if let page = getPageByDirction(dirction: op.rawValue){
-                            VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
-                            VoiceManager.shared.playList()
-                            appBrain.setPage(page)
-                        }
-                        break;
-                    case .next:
-                        VoiceManager.shared.appendTextList(list: [ op.description()])
-                        if let page = getNextPage(){
-                            VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
-                            VoiceManager.shared.playList()
-                            appBrain.setPage(page)
-                        }
-//                        self.number = nil
-                        
-                        break;
-                    case .previous:
-                        VoiceManager.shared.appendTextList(list: [ op.description()])
-                        if let page = getPrevPage(){
-                            VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
-                            VoiceManager.shared.playList()
-                            appBrain.setPage(page)
-                        }
-//                        self.number = nil
-                        
-                        break;
-
-                    default:
-                        
-                        break
-
-                        
+    func performAction(action:Action,value:String? = nil){
+        if let type = action.type {
+            if let operation = AppBrain.shared.operations[type]{
+                switch operation {
+                case .navigate(_):
+                    VoiceManager.shared.appendTextList(list: [""])
+                    if let page = getPageBy(id: value ?? action.value ?? ""){
+                        VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
+                        VoiceManager.shared.playList()
+                        AppBrain.shared.setPage(page)
                     }
-                }// End Command
-                break
-            default:
-                break
+                    break
+                    
+                case .command:
+                    // Comand
+                    if let val = value ?? action.value , let op = Commands(rawValue: val){
+                        switch (op){
+                        case .up , .down , .left , .right:
+                            if let page = getPageByDirction(dirction: op.rawValue){
+                                VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
+                                VoiceManager.shared.playList()
+                                AppBrain.shared.setPage(page)
+                            }
+                            break;
+                        case .next:
+                            VoiceManager.shared.appendTextList(list: [ op.description()])
+                            if let page = getNextPage() {
+                                VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
+                                VoiceManager.shared.playList()
+                                AppBrain.shared.setPage(page)
+                            }
+                            break;
+                        case .previous:
+                            VoiceManager.shared.appendTextList(list: [ op.description()])
+                            if let page = getPrevPage(){
+                                VoiceManager.shared.appendTextList(list: [ Commands.navigation.description(val: page.name ?? "")])
+                                VoiceManager.shared.playList()
+                                AppBrain.shared.setPage(page)
+                            }
+                            break;
+                        default:
+                            break
+                        }
+                    }// End Command
+                    break
+                default:
+                    break
+                }
             }
-            }
-            appBrain.setValue(action.value ?? "")
-            appBrain.performOperation(type)
+            AppBrain.shared.setValue(value ?? action.value ?? "")
+            AppBrain.shared.performOperation(type)
         }
-        
     }
-    
-    
-    
 }
-
 
 // navigation
 extension ViewController:NavigationManagerDelegate{
     func changePage(id: String) {
         if let page = getPageBy(id: id){
-           
+            
             navigateTo(page: page)
         }
     }
     
     func goTo(dirction: String) {
         if let page = getPageByDirction(dirction: dirction){
-//            VoiceManager.shared.appendTextList(list: [Commands(rawValue:dirction)?.description(val:"\(page.description ?? "")") ?? ""])
-//            VoiceManager.shared.playList()
             navigateTo(page: page)
         }
     }
-    
     func nextPage() {
         
         if let page = getNextPage(){
-//            VoiceManager.shared.appendTextList(list: [Commands.next.description(val:"\(page.description ?? "")")])
-//            VoiceManager.shared.playList()
             navigateTo(page: page)
         }else{
             VoiceManager.shared.removeLast()
@@ -394,8 +341,6 @@ extension ViewController:NavigationManagerDelegate{
     
     func prevPage() {
         if let page = getPrevPage(){
-//            VoiceManager.shared.appendTextList(list: [Commands.next.description(val:"\(page.description ?? "")")])
-//            VoiceManager.shared.playList()
             navigateTo(page: page)
         }else{
             VoiceManager.shared.removeLast()
@@ -404,8 +349,6 @@ extension ViewController:NavigationManagerDelegate{
     }
     
     func goToPage(num: Int) {
-//        VoiceManager.shared.appendTextList(list: [Commands.confirm.description(val:"\(num)")])
-//        VoiceManager.shared.playList()
         if let cnt = book?.pages?.count , num <= cnt,num > 0{
             if let page = book?.pages?[num - 1]{
                 navigateTo(page: page)
@@ -417,7 +360,6 @@ extension ViewController:NavigationManagerDelegate{
     
     func playMenuActions() {
         guard let menu = selectedPage?.menu else {return}
-//        let actions = menu.map{$0.type ?? ""}
         var textList:[String] = []
         var i = 1
         for action in menu{
@@ -478,11 +420,6 @@ extension ViewController:NavigationManagerDelegate{
             }
             i += 1
         }
-//        for action in  (actions.map{Commands(rawValue: $0)}.map{$0?.description ?? ($0?.rawValue)!}) {
-//
-//            textList.append("\(i)  \(action)")
-//            i += 1
-//        }
         VoiceManager.shared.appendTextList(list:textList)
     }
     
@@ -492,13 +429,37 @@ extension ViewController:NavigationManagerDelegate{
             let action = menu[num - 1]
             if let type = action.type{
                 if let val = action.value{
-                    self.appBrain.setValue(val)
-                    self.appBrain.performOperation(type)
-                    
+                    AppBrain.shared.setValue(val)
+                    AppBrain.shared.performOperation(type)
                 }
             }
         }else{
             AlertsManager.errorAlert()
         }
+    }
+}
+
+
+extension ViewController: SpeechCommandDelegate{
+    func commandDidFetched(command: VoiceCommand) {
+        switch command.commandType {
+        case .command:
+            if let value = command.value {
+                let action = Action()
+                action.type = "command"
+                performAction(action: action,value: value)
+            }
+        default:
+            VoiceManager.shared.speek("Invalid Voice Command")
+        }
+    }
+    
+    @IBAction func listen(_ sender: UILongPressGestureRecognizer) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(startListen), object: nil)
+        self.perform(#selector(startListen), with: nil, afterDelay: 0.5)
+    }
+    
+    @objc func startListen(){
+        SpeechCommandsManager.shared.open()
     }
 }

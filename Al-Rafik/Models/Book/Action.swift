@@ -76,7 +76,7 @@ public class Action:BaseModel{
     
     
     override public func dictionaryRepresentation() -> [String : Any] {
-        var dictionary = super.dictionaryRepresentation()
+        let dictionary = super.dictionaryRepresentation()
         return dictionary
     }
 }

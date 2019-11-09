@@ -87,6 +87,9 @@
 		14F45484226F98D5001B1EDA /* loading.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14F45481226F98D5001B1EDA /* loading.mp3 */; };
 		14F45485226F98D5001B1EDA /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14F45482226F98D5001B1EDA /* success.mp3 */; };
 		14F98C00225F9724009CB31A /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F98BFF225F9724009CB31A /* Control.swift */; };
+		2753CDB023743BC200448BDE /* SpeechCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2753CDAF23743BC200448BDE /* SpeechCommands.swift */; };
+		2753CDB223744D3800448BDE /* CommandAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2753CDB123744D3800448BDE /* CommandAPI.swift */; };
+		2753CDB42376A37B00448BDE /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2753CDB32376A37B00448BDE /* Command.swift */; };
 		85E76A049CD6F16D4EB95ACB /* Pods_Al_Rafik.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD6D4D9A2A1ED5891461C89 /* Pods_Al_Rafik.framework */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +179,9 @@
 		14F45481226F98D5001B1EDA /* loading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loading.mp3; sourceTree = "<group>"; };
 		14F45482226F98D5001B1EDA /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		14F98BFF225F9724009CB31A /* Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
+		2753CDAF23743BC200448BDE /* SpeechCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechCommands.swift; sourceTree = "<group>"; };
+		2753CDB123744D3800448BDE /* CommandAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAPI.swift; sourceTree = "<group>"; };
+		2753CDB32376A37B00448BDE /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		966C1CFDF50241FC68A7CA03 /* Pods-Al-Rafik.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Al-Rafik.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Al-Rafik/Pods-Al-Rafik.debug.xcconfig"; sourceTree = "<group>"; };
 		ECD6D4D9A2A1ED5891461C89 /* Pods_Al_Rafik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Al_Rafik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F735B174524CD45F11EFE586 /* Pods-Al-Rafik.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Al-Rafik.release.xcconfig"; path = "Pods/Target Support Files/Pods-Al-Rafik/Pods-Al-Rafik.release.xcconfig"; sourceTree = "<group>"; };
@@ -279,6 +285,7 @@
 			children = (
 				1438ABC12257F13300ED68D4 /* BaseModel.swift */,
 				1438ABBE2257F11200ED68D4 /* Book */,
+				2753CDB32376A37B00448BDE /* Command.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,6 +318,8 @@
 				1438ABCA2257F15F00ED68D4 /* Actions.swift */,
 				149B49992266807C000DA33B /* AppBrain.swift */,
 				14F4547D226F9566001B1EDA /* AlertsManager.swift */,
+				2753CDAF23743BC200448BDE /* SpeechCommands.swift */,
+				2753CDB123744D3800448BDE /* CommandAPI.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -561,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2753CDB223744D3800448BDE /* CommandAPI.swift in Sources */,
 				14B6DA172292BE0F00887FF2 /* String.swift in Sources */,
 				14F98C00225F9724009CB31A /* Control.swift in Sources */,
 				14F4547E226F9566001B1EDA /* AlertsManager.swift in Sources */,
@@ -570,6 +580,7 @@
 				1438ABB82257E27100ED68D4 /* ArchiveHelper.swift in Sources */,
 				14B6DA152292BE0F00887FF2 /* UIImageView.swift in Sources */,
 				14F4547C226F5E12001B1EDA /* Direction.swift in Sources */,
+				2753CDB023743BC200448BDE /* SpeechCommands.swift in Sources */,
 				1438ABA4225547E800ED68D4 /* ViewController.swift in Sources */,
 				14B6DA0F2292BE0F00887FF2 /* UIApplication.swift in Sources */,
 				14B6D9FD2292BE0E00887FF2 /* XUILabel.swift in Sources */,
@@ -590,6 +601,7 @@
 				1438ABC52257F14000ED68D4 /* AbstractController.swift in Sources */,
 				14B6DA012292BE0E00887FF2 /* UITextField.swift in Sources */,
 				14B6DA092292BE0F00887FF2 /* UIImageViewWithMask.swift in Sources */,
+				2753CDB42376A37B00448BDE /* Command.swift in Sources */,
 				14B6DA062292BE0F00887FF2 /* PinterestLayout.swift in Sources */,
 				14B6DA052292BE0E00887FF2 /* UIViewController.swift in Sources */,
 				14B6DA002292BE0E00887FF2 /* ShadowLineView.swift in Sources */,
@@ -768,9 +780,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BBSB6N9C9P;
+				DEVELOPMENT_TEAM = M6V77JHHPP;
 				INFOPLIST_FILE = "Al-Rafik/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -791,9 +803,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BBSB6N9C9P;
+				DEVELOPMENT_TEAM = M6V77JHHPP;
 				INFOPLIST_FILE = "Al-Rafik/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
