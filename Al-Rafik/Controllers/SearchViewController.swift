@@ -197,6 +197,11 @@ extension SearchViewController : SpeechCommandDelegate {
                 number  = value
                 goToBookPage()
             }
+        case .changeLanguage:
+            if let value = command.value , let language = AppLanguage.init(rawValue: value) {
+                AppConfig.currentLanguage = language
+                VoiceManager.shared.speek(language.languageName)
+            }
         default:
             VoiceManager.shared.speek("Invalid Voice Command")
         }

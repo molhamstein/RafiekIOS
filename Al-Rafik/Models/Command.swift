@@ -12,6 +12,9 @@ enum VoiceCommandsType: String{
     case bookSearch = "book_search"
     case command = "command"
     case chooseBook = "choose_book"
+    case changeLanguage = "change_language"
+    case selectCommand = "command_select"
+    case selectPage = "choose_page"
     case wrongCommand = "wrong_command"
 }
 
@@ -54,6 +57,21 @@ struct VoiceCommand : Codable {
                 return value
             }
             return nil
+        case .changeLanguage:
+            if let value = entities?.language?.first?.value{
+                return value
+            }
+            return nil
+        case .selectCommand:
+            if let value = entities?.command?.first?.value{
+                return value
+            }
+            return nil
+        case .selectPage:
+            if let value = entities?.page_number?.first?.value {
+                return value
+            }
+            return nil
         case .wrongCommand:
             return nil
         }
@@ -77,10 +95,14 @@ struct Intent : Codable {
 }
 
 struct Entities : Codable {
+    let page_number : [Page_number]?
+    let language : [Language]?
     let command : [Command]?
     let book_number : [Book_number]?
     let intent : [Intent]?
     enum CodingKeys: String, CodingKey {
+        case page_number = "page_number"
+        case language = "language"
         case command = "command"
         case book_number = "book_number"
         case intent = "intent"
@@ -88,6 +110,8 @@ struct Entities : Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        page_number = try values.decodeIfPresent([Page_number].self, forKey: .page_number)
+        language = try values.decodeIfPresent([Language].self, forKey: .language)
         command = try values.decodeIfPresent([Command].self, forKey: .command)
         book_number = try values.decodeIfPresent([Book_number].self, forKey: .book_number)
         intent = try values.decodeIfPresent([Intent].self, forKey: .intent)
@@ -120,6 +144,49 @@ struct Book_number : Codable {
     let type : String?
     
     enum CodingKeys: String, CodingKey {
+        case confidence = "confidence"
+        case value = "value"
+        case type = "type"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        confidence = try values.decodeIfPresent(Double.self, forKey: .confidence)
+        value = try values.decodeIfPresent(String.self, forKey: .value)
+        type = try values.decodeIfPresent(String.self, forKey: .type)
+    }
+    
+}
+
+
+struct Language : Codable {
+    let confidence : Double?
+    let value : String?
+    let type : String?
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case confidence = "confidence"
+        case value = "value"
+        case type = "type"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        confidence = try values.decodeIfPresent(Double.self, forKey: .confidence)
+        value = try values.decodeIfPresent(String.self, forKey: .value)
+        type = try values.decodeIfPresent(String.self, forKey: .type)
+    }
+    
+}
+
+struct Page_number : Codable {
+    let confidence : Double?
+    let value : String?
+    let type : String?
+    
+    enum CodingKeys: String, CodingKey {
+        
         case confidence = "confidence"
         case value = "value"
         case type = "type"

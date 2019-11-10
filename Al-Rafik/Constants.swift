@@ -135,4 +135,13 @@ enum AppLanguage:String{
             return "ar"
         }
     }
+    
+    var languageName: String {
+        switch self {
+        case .english:
+            return "English"
+        case .arabic:
+            return "العربية"
+        }
+    }
 }

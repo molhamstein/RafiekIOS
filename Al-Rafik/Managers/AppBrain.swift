@@ -162,7 +162,6 @@ class AppBrain {
                 }
                 number = nil
                 break
-                
             case .navigate(_):
                 if let _ = selectedPage{
                     enterMode = false
@@ -170,7 +169,6 @@ class AppBrain {
                 }
                 number = nil
                 break
-                
             case .openUrl(let openURL):
                 openURL(value ?? "")
                 number = nil
@@ -219,6 +217,9 @@ class AppBrain {
                 handelMenuMode(op:op)
                 break
             case .confirm:
+                enterMode = true
+                confirmMode = false
+                handelEnterMode(op:op)
                 break
             default:
                 VoiceManager.shared.speek(op.description()) { _ in
@@ -272,15 +273,14 @@ class AppBrain {
         if confirmMode || enterMode{
             confirmMode = false
             enterMode = false
-         
         }else{
-        VoiceManager.shared.appendTextList(list: [op.description()])
-        NavigationManager.playMenuActions()
-        VoiceManager.shared.playList()
-        self.menuMode = true
-        self.enterMode = false
-        self.confirmMode = false
-        self.number = nil
+            VoiceManager.shared.appendTextList(list: [op.description()])
+            NavigationManager.playMenuActions()
+            VoiceManager.shared.playList()
+            self.menuMode = true
+            self.enterMode = false
+            self.confirmMode = false
+            self.number = nil
         }
     }
     func setPage(_ page:Page){

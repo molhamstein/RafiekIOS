@@ -25,7 +25,7 @@ class LanguageViewController: AbstractController {
             enablePress = true
         }else if(sender.state == UIGestureRecognizer.State.began){
             print("began")
-            if enablePress{
+            if enablePress {
                 enablePress = false
                 AppConfig.currentLanguage = .arabic
                 VoiceManager.shared.speek("العربية")

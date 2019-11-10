@@ -319,7 +319,6 @@ class ViewController: AbstractController {
 extension ViewController:NavigationManagerDelegate{
     func changePage(id: String) {
         if let page = getPageBy(id: id){
-            
             navigateTo(page: page)
         }
     }
@@ -350,7 +349,7 @@ extension ViewController:NavigationManagerDelegate{
     
     func goToPage(num: Int) {
         if let cnt = book?.pages?.count , num <= cnt,num > 0{
-            if let page = book?.pages?[num - 1]{
+            if let page = book?.pages?[num - 1] {
                 navigateTo(page: page)
             }
         }else{
@@ -448,6 +447,29 @@ extension ViewController: SpeechCommandDelegate{
                 let action = Action()
                 action.type = "command"
                 performAction(action: action,value: value)
+            }
+            break
+        case .changeLanguage:
+            if let value = command.value , let language = AppLanguage.init(rawValue: value) {
+                AppConfig.currentLanguage = language
+                VoiceManager.shared.speek(language.languageName)
+            }
+            break
+        case .selectCommand:
+            if let value = command.value {
+                let action = Action()
+                action.type = "command"
+                performAction(action: action,value: value)
+                action.type = "command"
+                performAction(action: action,value: "enter")
+            }
+        case .selectPage:
+            if let value = command.value {
+                let action = Action()
+                action.type = "command"
+                performAction(action: action,value: value)
+                action.type = "command"
+                performAction(action: action,value: "confirm")
             }
         default:
             VoiceManager.shared.speek("Invalid Voice Command")
