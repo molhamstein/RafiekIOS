@@ -10,6 +10,9 @@ import UIKit
 
 class LanguageViewController: AbstractController {
 
+    @IBOutlet weak var btnArabic:UIView!
+    @IBOutlet weak var btnEnglish:UIView!
+    
     var enablePress = true
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +21,13 @@ class LanguageViewController: AbstractController {
         VoiceManager.shared.speek(MessagesHelper.languageViewInfoMessage)
     }
     
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.btnArabic.addDashedBorder()
+        self.btnEnglish.addDashedBorder()
+    }
 
     
     @IBAction func setArabic(_ sender: UILongPressGestureRecognizer) {

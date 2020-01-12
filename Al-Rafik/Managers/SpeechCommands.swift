@@ -146,16 +146,18 @@ class SpeechCommandsManager: NSObject, SFSpeechRecognizerDelegate {
     private func startListening() {
         AlertsManager.successAlert()
         self.StopSpeechTimer()
+        self.recognitionRequest?.endAudio()
         // Clear existing tasks
         if recognitionTask != nil {
-            recognitionTask?.cancel()
+            recognitionTask?.finish()
             recognitionTask = nil
         }
         // Start audio session
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
+            //try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: [])
             try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
         } catch {
             print("An error occurred when starting audio session.")
@@ -195,6 +197,7 @@ class SpeechCommandsManager: NSObject, SFSpeechRecognizerDelegate {
             if error != nil || self.listening == false{
                 //  self.playErrorSound()
                 // here give error signal
+                 print(error)
                 self.finalizeListening()
             }
         })

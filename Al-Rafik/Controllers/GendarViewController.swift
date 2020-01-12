@@ -12,13 +12,21 @@ class GendarViewController: AbstractController {
 
     var enablePress = true
     
+    @IBOutlet weak var btnMale:UIView!
+    @IBOutlet weak var btnFemale:UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         VoiceManager.shared.speek(MessagesHelper.gendarViewInfoMessage)
     }
     
-
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.btnMale.addDashedBorder()
+        self.btnFemale.addDashedBorder()
+    }
     
     @IBAction func setMale(_ sender: UILongPressGestureRecognizer) {
         if(sender.state == UIGestureRecognizer.State.ended){

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GE5-sl-UN2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GE5-sl-UN2">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -146,42 +146,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fKS-Ak-auk">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                                <subviews>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76u-2b-d1d">
-                                        <rect key="frame" x="0.0" y="0.0" width="203" height="672"/>
-                                        <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="n0g-1A-2Hm" appends="YES" id="ENU-f5-khM"/>
-                                        </connections>
-                                    </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="En" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXm-RG-Cv8">
-                                        <rect key="frame" x="211" y="0.0" width="203" height="672"/>
-                                        <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="PDm-wy-rud" appends="YES" id="hXt-nM-q8B"/>
-                                        </connections>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="العربية" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76u-2b-d1d">
+                                <rect key="frame" x="79.333333333333329" y="372.66666666666669" width="89.999999999999986" height="55"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="CoT-zn-yIi"/>
+                                    <constraint firstAttribute="width" constant="90" id="tj1-U0-jKS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="n0g-1A-2Hm" appends="YES" id="ENU-f5-khM"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXm-RG-Cv8">
+                                <rect key="frame" x="244.66666666666663" y="372.66666666666669" width="90" height="55"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="2Ec-cz-VOJ"/>
+                                    <constraint firstAttribute="width" constant="90" id="NBA-Kf-dQE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="PDm-wy-rud" appends="YES" id="hXt-nM-q8B"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fKS-Ak-auk" firstAttribute="leading" secondItem="mgj-hO-Am8" secondAttribute="leading" id="Oql-lR-tXF"/>
-                            <constraint firstItem="fKS-Ak-auk" firstAttribute="top" secondItem="mgj-hO-Am8" secondAttribute="top" id="c8x-DS-age"/>
-                            <constraint firstItem="mgj-hO-Am8" firstAttribute="bottom" secondItem="fKS-Ak-auk" secondAttribute="bottom" id="q55-m0-Muv"/>
-                            <constraint firstItem="mgj-hO-Am8" firstAttribute="trailing" secondItem="fKS-Ak-auk" secondAttribute="trailing" id="tYQ-hn-8hE"/>
+                            <constraint firstItem="76u-2b-d1d" firstAttribute="centerX" secondItem="mgj-hO-Am8" secondAttribute="centerX" multiplier="0.6" id="D4T-wF-6YF"/>
+                            <constraint firstItem="VXm-RG-Cv8" firstAttribute="centerY" secondItem="mgj-hO-Am8" secondAttribute="centerY" id="TGv-ji-Rdd"/>
+                            <constraint firstItem="VXm-RG-Cv8" firstAttribute="centerX" secondItem="mgj-hO-Am8" secondAttribute="centerX" multiplier="1.4" id="W0a-78-kGE"/>
+                            <constraint firstItem="76u-2b-d1d" firstAttribute="centerY" secondItem="mgj-hO-Am8" secondAttribute="centerY" id="p9X-Za-tZU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mgj-hO-Am8"/>
                     </view>
                     <navigationItem key="navigationItem" id="6mC-yF-gG6"/>
+                    <connections>
+                        <outlet property="btnArabic" destination="76u-2b-d1d" id="Do3-2i-Trw"/>
+                        <outlet property="btnEnglish" destination="VXm-RG-Cv8" id="9XA-bn-1h4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxJ-Mw-b0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="n0g-1A-2Hm" userLabel="ar">
@@ -205,41 +212,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f0m-ft-yL4">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
-                                <subviews>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWt-3f-AV4">
-                                        <rect key="frame" x="0.0" y="0.0" width="203" height="716"/>
-                                        <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Bti-ab-iuj" appends="YES" id="EWB-gz-eQT"/>
-                                        </connections>
-                                    </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Female" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ig-Gj-WV5">
-                                        <rect key="frame" x="211" y="0.0" width="203" height="716"/>
-                                        <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="iOG-ms-t8F" appends="YES" id="ftH-Zb-ftX"/>
-                                        </connections>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWt-3f-AV4">
+                                <rect key="frame" x="79.333333333333329" y="350.66666666666669" width="89.999999999999986" height="55"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="Ws0-Mf-8Em"/>
+                                    <constraint firstAttribute="height" constant="55" id="nsS-vW-8Pd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Bti-ab-iuj" appends="YES" id="EWB-gz-eQT"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Female" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ig-Gj-WV5">
+                                <rect key="frame" x="244.66666666666663" y="350.66666666666669" width="90" height="55"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="ryI-id-IuT"/>
+                                    <constraint firstAttribute="height" constant="55" id="wP2-WY-kef"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="iOG-ms-t8F" appends="YES" id="ftH-Zb-ftX"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SOe-4X-5dA" firstAttribute="trailing" secondItem="f0m-ft-yL4" secondAttribute="trailing" id="21S-5B-trB"/>
-                            <constraint firstItem="f0m-ft-yL4" firstAttribute="leading" secondItem="SOe-4X-5dA" secondAttribute="leading" id="e2J-Sg-HNp"/>
-                            <constraint firstItem="f0m-ft-yL4" firstAttribute="top" secondItem="SOe-4X-5dA" secondAttribute="top" id="exs-9r-Liu"/>
-                            <constraint firstItem="SOe-4X-5dA" firstAttribute="bottom" secondItem="f0m-ft-yL4" secondAttribute="bottom" id="pUQ-ni-dBg"/>
+                            <constraint firstItem="oWt-3f-AV4" firstAttribute="centerY" secondItem="SOe-4X-5dA" secondAttribute="centerY" id="JQx-hB-kQG"/>
+                            <constraint firstItem="oWt-3f-AV4" firstAttribute="centerX" secondItem="SOe-4X-5dA" secondAttribute="centerX" multiplier="0.6" id="NLJ-YO-Kc5"/>
+                            <constraint firstItem="9Ig-Gj-WV5" firstAttribute="centerX" secondItem="SOe-4X-5dA" secondAttribute="centerX" multiplier="1.4" id="tdg-as-Hm2"/>
+                            <constraint firstItem="9Ig-Gj-WV5" firstAttribute="centerY" secondItem="SOe-4X-5dA" secondAttribute="centerY" id="uAi-ML-gFn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SOe-4X-5dA"/>
                     </view>
+                    <connections>
+                        <outlet property="btnFemale" destination="9Ig-Gj-WV5" id="SCl-yJ-rzd"/>
+                        <outlet property="btnMale" destination="oWt-3f-AV4" id="TGV-cD-LoO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRp-x6-6LJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Bti-ab-iuj" userLabel="male">
